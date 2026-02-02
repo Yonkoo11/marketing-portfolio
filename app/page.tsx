@@ -22,8 +22,8 @@ export default function Home() {
             <p className="classification">Marketing Profile</p>
             <h1 className="hero-name">dr. alex</h1>
             <p className="hero-tagline">
-              Medical doctor and Web3 builder. I create content that resonates,
-              understand what makes campaigns work, and build products people use.
+              Medical doctor and builder. I make things people actually use,
+              and I know how to get eyes on them.
             </p>
 
             {/* Vitals inline with hero */}
@@ -72,7 +72,7 @@ export default function Home() {
         <div className="section-inner">
           <div className="section-header">
             <h2 className="section-title">What I Do</h2>
-            <p className="section-subtitle">Content creation and community engagement in Web3</p>
+            <p className="section-subtitle">Marketing and product work in crypto</p>
           </div>
 
           <div className="work-grid">
@@ -82,9 +82,8 @@ export default function Home() {
               </div>
               <h3 className="work-title">Truth Bounty</h3>
               <p className="work-desc">
-                Marketing team member for Truth Bounty, a prediction markets
-                platform. Helped position and promote the project to a
-                2nd place finish in the Seedify Hackathon.
+                Ran marketing for Truth Bounty, a prediction markets platform.
+                We took 2nd place at the Seedify Hackathon.
               </p>
               <div className="work-metrics">
                 <div className="metric">
@@ -100,13 +99,12 @@ export default function Home() {
 
             <article className="work-card">
               <div className="work-card-header">
-                <span className="work-category">Builder + Marketer</span>
+                <span className="work-category">Builder</span>
               </div>
-              <h3 className="work-title">Product Understanding</h3>
+              <h3 className="work-title">Ships Products</h3>
               <p className="work-desc">
-                I build Web3 products, so I understand them deeply. This means
-                authentic promotion rooted in real technical knowledge,
-                not surface-level marketing speak.
+                I code. When I market something, I actually understand
+                how it works under the hood. No bullshit.
               </p>
               <div className="work-metrics">
                 <div className="metric">
@@ -114,8 +112,8 @@ export default function Home() {
                   <span className="metric-label">Background</span>
                 </div>
                 <div className="metric">
-                  <span className="metric-value">Authentic</span>
-                  <span className="metric-label">Approach</span>
+                  <span className="metric-value">Full</span>
+                  <span className="metric-label">Stack</span>
                 </div>
               </div>
             </article>
@@ -128,46 +126,46 @@ export default function Home() {
         <div className="section-inner">
           <div className="section-header">
             <h2 className="section-title">How I Can Help</h2>
-            <p className="section-subtitle">Where my skills translate to your project</p>
+            <p className="section-subtitle">What I bring to the table</p>
           </div>
 
           <div className="services-grid">
             <div className="service-card">
-              <h3 className="service-title">Content Creation</h3>
+              <h3 className="service-title">Content</h3>
               <p className="service-desc">
-                Crypto-native content that connects. Memes, threads,
-                and commentary that speaks the language of Web3.
+                Posts that don't read like corporate garbage.
+                Memes, threads, takes. Stuff people actually engage with.
               </p>
               <div className="service-tags">
                 <span className="tag">Memes</span>
                 <span className="tag">Threads</span>
-                <span className="tag">Commentary</span>
+                <span className="tag">Takes</span>
               </div>
             </div>
 
             <div className="service-card">
-              <h3 className="service-title">Product Insight</h3>
+              <h3 className="service-title">Technical Depth</h3>
               <p className="service-desc">
-                I build products, so I understand them. This means
-                authentic promotion rooted in real understanding.
+                I can read code and write it. When I explain your product,
+                I know what I'm talking about.
               </p>
               <div className="service-tags">
-                <span className="tag">Web3</span>
                 <span className="tag">DeFi</span>
-                <span className="tag">User Focus</span>
+                <span className="tag">Smart Contracts</span>
+                <span className="tag">Product</span>
               </div>
             </div>
 
             <div className="service-card">
-              <h3 className="service-title">Community Engagement</h3>
+              <h3 className="service-title">Community</h3>
               <p className="service-desc">
-                Organic presence on X/Twitter. Understanding what
-                resonates and how to participate authentically.
+                Been in crypto Twitter since 2021.
+                I know how the game works.
               </p>
               <div className="service-tags">
                 <span className="tag">Twitter/X</span>
-                <span className="tag">Crypto CT</span>
-                <span className="tag">Engagement</span>
+                <span className="tag">CT</span>
+                <span className="tag">Discord</span>
               </div>
             </div>
           </div>
@@ -179,21 +177,20 @@ export default function Home() {
         <div className="section-inner">
           <div className="about-layout">
             <div className="about-content">
-              <h2 className="section-title">Builder who understands growth.</h2>
+              <h2 className="section-title">Doctor who builds.</h2>
               <p className="about-text">
-                Licensed medical doctor who found a calling in Web3. I build products
-                and create content. The same analytical rigor I apply to diagnostics,
-                I bring to understanding what makes things spread.
+                Licensed MD. Got into crypto in 2021 and started building.
+                Survived the bear market by shipping instead of complaining.
               </p>
               <p className="about-text">
-                In crypto since 2021, building through bear markets. I've shipped
-                projects, grown an audience organically, and studied what works
-                in this space. I understand products from the inside out.
+                I code, I create content, and I understand marketing because
+                I've had to market my own projects. No agency background,
+                just real experience getting things in front of people.
               </p>
               <div className="about-tags">
                 <span className="tag">Medical Doctor</span>
-                <span className="tag">Web3 Builder</span>
-                <span className="tag">Content Creator</span>
+                <span className="tag">Builder</span>
+                <span className="tag">Content</span>
               </div>
             </div>
           </div>
@@ -205,10 +202,9 @@ export default function Home() {
         <div className="section-inner">
           <div className="contact-layout">
             <div className="contact-content">
-              <h2 className="contact-title">Let's work together.</h2>
+              <h2 className="contact-title">Let's talk.</h2>
               <p className="contact-text">
-                Looking for a marketer who understands Web3 culture
-                and delivers results? Reach out.
+                Need someone who gets crypto and can actually ship? Hit me up.
               </p>
               <div className="contact-buttons">
                 <a
