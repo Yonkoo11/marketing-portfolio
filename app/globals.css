@@ -2,32 +2,28 @@
 
 :root {
   --bg: #fffef8;
-  --bg-alt: #f2efe9;
-  --surface: #ffffff;
+  --bg-alt: #f7f5f0;
   --border: rgba(26, 24, 21, 0.1);
   --border-strong: rgba(26, 24, 21, 0.2);
   --text: #1a1815;
   --text-secondary: #5c5a56;
   --text-muted: #8a8680;
   --accent: #d64045;
-  --accent-muted: rgba(214, 64, 69, 0.1);
   --green: #2d936c;
 }
 
 @theme {
   --color-bg: var(--bg);
   --color-bg-alt: var(--bg-alt);
-  --color-surface: var(--surface);
   --color-border: var(--border);
   --color-border-strong: var(--border-strong);
   --color-text: var(--text);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-accent: var(--accent);
-  --color-accent-muted: var(--accent-muted);
   --color-green: var(--green);
-  --font-sans: 'Space Mono', monospace;
-  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
 }
 
 * {
@@ -42,7 +38,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: 'Space Mono', monospace;
   background: #fffef8;
   color: #1a1815;
   font-size: 15px;
@@ -51,11 +47,11 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--bg);
+  background: #d64045;
+  color: #fffef8;
 }
 
-/* Scrollbar - minimal */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -65,34 +61,182 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-strong);
+  background: rgba(26, 24, 21, 0.2);
   border-radius: 3px;
 }
 
-/* Typography */
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
+/* ========================================
+   DIAGNOSTIC PAGE STYLES
+   ======================================== */
+
+.diagnostic-page {
+  position: relative;
 }
 
-/* Primary button - simple, exquisite */
+/* Full-height red margin line */
+.margin-line-full {
+  position: absolute;
+  left: 60px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #d64045;
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .margin-line-full {
+    left: 24px;
+    width: 2px;
+  }
+}
+
+/* Classification header */
+.classification {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #8a8680;
+  margin-bottom: 20px;
+}
+
+/* Hero name - large italic serif */
+.hero-name {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(64px, 12vw, 100px);
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  color: #1a1815;
+  line-height: 0.9;
+  margin-bottom: 24px;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 15px;
+  color: #1a1815;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* Avatar box - thick border like OG */
+.avatar-box {
+  width: 140px;
+  height: 140px;
+  border: 4px solid #1a1815;
+  padding: 4px;
+  margin-left: auto;
+}
+
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.1);
+}
+
+@media (max-width: 1024px) {
+  .avatar-box {
+    margin-left: 0;
+  }
+}
+
+/* Handle */
+.handle {
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 12px;
+}
+
+@media (max-width: 1024px) {
+  .handle {
+    text-align: left;
+  }
+}
+
+/* Vitals strip - horizontal row */
+.vitals-strip {
+  display: flex;
+  flex-direction: row;
+  gap: 48px;
+  padding-top: 40px;
+  margin-top: 48px;
+  border-top: 2px solid rgba(26, 24, 21, 0.1);
+  flex-wrap: wrap;
+}
+
+.vitals-strip .vital {
+  padding: 0;
+  border: none;
+  border-bottom: none;
+}
+
+.vital-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #8a8680;
+  margin-bottom: 8px;
+}
+
+.vital-value {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1;
+  color: #1a1815;
+}
+
+.vital-value.green {
+  color: #2d936c;
+}
+
+/* Rotated stamp */
+.stamp-rotated {
+  position: absolute;
+  bottom: 40px;
+  right: 64px;
+  color: #d64045;
+  font-weight: 700;
+  font-size: 12px;
+  border: 3px solid #d64045;
+  padding: 12px 24px;
+  transform: rotate(-3deg);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+  .stamp-rotated {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    margin-top: 32px;
+    display: inline-block;
+  }
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
-  background: var(--text);
-  color: var(--bg);
+  background: #1a1815;
+  color: #fffef8;
   font-size: 13px;
   font-weight: 400;
   text-decoration: none;
   letter-spacing: 0.02em;
-  transition: transform 0.15s ease-out, background 0.15s ease-out;
+  transition: background 0.15s ease-out, transform 0.15s ease-out;
 }
 
 .btn-primary:hover {
-  background: var(--accent);
+  background: #d64045;
 }
 
 .btn-primary:active {
@@ -100,19 +244,18 @@ h1, h2, h3 {
 }
 
 .btn-primary:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #d64045;
   outline-offset: 2px;
 }
 
-/* Secondary button */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 14px 28px;
   background: transparent;
-  border: 1px solid var(--border-strong);
-  color: var(--text);
+  border: 1px solid rgba(26, 24, 21, 0.2);
+  color: #1a1815;
   font-size: 13px;
   font-weight: 400;
   text-decoration: none;
@@ -121,8 +264,8 @@ h1, h2, h3 {
 }
 
 .btn-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #d64045;
+  color: #d64045;
 }
 
 .btn-secondary:active {
@@ -130,101 +273,42 @@ h1, h2, h3 {
 }
 
 .btn-secondary:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #d64045;
   outline-offset: 2px;
 }
 
-/* Link style */
-a {
-  transition: color 0.15s ease-out;
+/* ========================================
+   SECTIONS
+   ======================================== */
+
+.divider {
+  height: 1px;
+  background: rgba(26, 24, 21, 0.1);
 }
 
-a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+.bg-alt {
+  background: #f7f5f0;
 }
 
-/* Vitals - clinical data display */
-.vital {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.vital:last-child {
-  border-bottom: none;
-}
-
-.vital-label {
+.section-label {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--text-muted);
-  margin-bottom: 6px;
+  color: #8a8680;
+  position: sticky;
+  top: 32px;
 }
 
-.vital-value {
-  font-family: var(--font-display);
-  font-size: 36px;
-  line-height: 1;
-}
+/* ========================================
+   WORK ITEMS
+   ======================================== */
 
-.vital-value.green {
-  color: var(--green);
-}
-
-/* Section divider */
-.divider {
-  height: 1px;
-  background: var(--border);
-}
-
-/* Card - minimal */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 32px;
-  transition: border-color 0.15s ease-out;
-}
-
-.card:hover {
-  border-color: var(--border-strong);
-}
-
-/* Tag */
-.tag {
-  display: inline-block;
-  padding: 6px 12px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-  transition: border-color 0.15s ease-out, color 0.15s ease-out;
-}
-
-.tag:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* Stamp - diagnostic accent */
-.stamp {
-  display: inline-block;
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 12px;
-  border: 2px solid var(--accent);
-  padding: 10px 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-/* Red margin line - diagnostic detail */
-.margin-line {
+.work-item {
   position: relative;
+  padding-left: 24px;
 }
 
-.margin-line::before {
+.work-item::before {
   content: '';
   position: absolute;
   left: 0;
@@ -235,52 +319,172 @@ a:focus-visible {
   opacity: 0.4;
 }
 
-/* Profile card */
-.profile-card {
-  border: 1px solid rgba(26, 24, 21, 0.12);
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(26, 24, 21, 0.04);
+.work-category {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #d64045;
+  margin-bottom: 8px;
 }
 
-/* Avatar frame */
-.avatar-frame {
+.work-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: #1a1815;
+}
+
+.work-desc {
+  color: #5c5a56;
+  max-width: 520px;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.work-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.stat-label {
+  color: #8a8680;
+  font-size: 13px;
+}
+
+.stat-value {
+  font-weight: 700;
+  color: #1a1815;
+  margin-right: 20px;
+}
+
+/* ========================================
+   SERVICES
+   ======================================== */
+
+.service-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 12px;
+  color: #1a1815;
+}
+
+.service-desc {
+  color: #5c5a56;
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ========================================
+   TAGS
+   ======================================== */
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8a8680;
   border: 1px solid rgba(26, 24, 21, 0.15);
-  padding: 3px;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
 }
 
-/* Section alt background */
-.bg-alt {
-  background: #f7f5f0;
+.tag:hover {
+  border-color: #d64045;
+  color: #d64045;
 }
 
-/* Fade in animation - subtle */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ========================================
+   ABOUT
+   ======================================== */
+
+.about-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 24px;
+  color: #1a1815;
 }
 
-.animate-in {
-  animation: fadeIn 0.4s ease-out forwards;
+.about-text {
+  color: #5c5a56;
+  margin-bottom: 16px;
+  line-height: 1.7;
 }
 
-.delay-1 { animation-delay: 0.05s; opacity: 0; }
-.delay-2 { animation-delay: 0.1s; opacity: 0; }
-.delay-3 { animation-delay: 0.15s; opacity: 0; }
-.delay-4 { animation-delay: 0.2s; opacity: 0; }
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
 
-/* Focus ring for accessibility */
+/* ========================================
+   CONTACT
+   ======================================== */
+
+.contact-title {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  margin-bottom: 16px;
+  color: #1a1815;
+}
+
+.contact-text {
+  color: #5c5a56;
+  margin-bottom: 24px;
+  max-width: 400px;
+  line-height: 1.7;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer-text {
+  font-size: 12px;
+  color: #8a8680;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2d936c;
+}
+
+/* ========================================
+   FOCUS & ACCESSIBILITY
+   ======================================== */
+
 :focus {
   outline: none;
 }
 
-button:focus-visible,
-[role="button"]:focus-visible {
-  outline: 2px solid var(--accent);
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #d64045;
   outline-offset: 2px;
 }

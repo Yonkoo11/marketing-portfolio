@@ -1,160 +1,127 @@
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Header - minimal */}
-      <header className="py-6 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span className="text-sm tracking-wide">dr. alex</span>
-          <a
-            href="https://x.com/soligxbt"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-text-muted hover:text-accent"
-          >
-            @soligxbt
-          </a>
-        </div>
-      </header>
+    <div className="min-h-screen diagnostic-page">
+      {/* Hero - Diagnostic Report Style */}
+      <header className="relative px-8 md:px-16 pt-16 pb-12">
+        {/* Red margin line */}
+        <div className="margin-line-full" />
 
-      {/* Hero - simple, striking */}
-      <section className="px-6 md:px-12 pt-12 pb-24">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-[1fr_280px] gap-16">
-            <div className="animate-in">
-              <p className="text-xs uppercase tracking-[0.25em] text-text-muted mb-6">
-                Marketing Profile
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
+            {/* Left: Name and tagline */}
+            <div className="pl-8 lg:pl-12">
+              <p className="classification">Marketing Profile · Diagnostic Report</p>
+              <h1 className="hero-name">dr. alex</h1>
+              <p className="tagline">
+                Licensed medical doctor with a passion for digital storytelling,
+                brand strategy, and audience-building.
               </p>
-              <h1 className="text-[64px] md:text-[80px] leading-[0.95] italic mb-8">
-                dr. alex
-              </h1>
-              <p className="text-text-secondary max-w-md leading-relaxed mb-10">
-                Medical doctor with a second practice in Web3 marketing.
-                I bring clinical precision to content strategy, campaign analysis,
-                and community growth.
-              </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 mt-10">
                 <a href="#contact" className="btn-primary">
                   Work with me
                 </a>
                 <a href="#work" className="btn-secondary">
-                  See my work
+                  View work
                 </a>
               </div>
             </div>
 
-            {/* Right column - vitals */}
-            <div className="animate-in delay-1">
-              <div className="profile-card p-6">
-                <div className="flex items-center gap-4 mb-6 pb-6 border-b border-border-strong">
-                  <div className="w-16 h-16 avatar-frame">
-                    <img
-                      src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg"
-                      alt="dr. alex"
-                      className="w-full h-full object-cover grayscale"
-                    />
-                  </div>
-                  <div>
-                    <div className="font-bold text-sm">@SOLIGXBT</div>
-                    <div className="text-xs text-text-muted">Verified</div>
-                  </div>
-                </div>
-                <div className="vital">
-                  <div className="vital-label">Followers</div>
-                  <div className="vital-value">2,142</div>
-                </div>
-                <div className="vital">
-                  <div className="vital-label">Engagement</div>
-                  <div className="vital-value green">High</div>
-                </div>
-                <div className="vital">
-                  <div className="vital-label">Status</div>
-                  <div className="stamp mt-2">Open to Work</div>
-                </div>
+            {/* Right: Avatar */}
+            <div className="lg:text-right">
+              <div className="avatar-box">
+                <img
+                  src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg"
+                  alt="dr. alex"
+                />
               </div>
+              <div className="handle">@SOLIGXBT</div>
+            </div>
+          </div>
+
+          {/* Vitals Strip */}
+          <div className="vitals-strip">
+            <div className="vital">
+              <div className="vital-label">Followers</div>
+              <div className="vital-value">2,142</div>
+            </div>
+            <div className="vital">
+              <div className="vital-label">Engagement</div>
+              <div className="vital-value green">High</div>
+            </div>
+            <div className="vital">
+              <div className="vital-label">Content</div>
+              <div className="vital-value">Viral</div>
+            </div>
+            <div className="vital">
+              <div className="vital-label">Specialty</div>
+              <div className="vital-value">Memes</div>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Rotated stamp */}
+        <div className="stamp-rotated">Open to Work</div>
+      </header>
 
       {/* Divider */}
       <div className="divider" />
 
       {/* Work */}
-      <section id="work" className="px-6 md:px-12 py-24">
+      <section id="work" className="px-8 md:px-16 py-20">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-[200px_1fr] gap-16">
+          <div className="grid lg:grid-cols-[180px_1fr] gap-12">
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-text-muted sticky top-8">
-                Selected Work
-              </p>
+              <p className="section-label">Selected Work</p>
             </div>
-            <div className="space-y-16">
+            <div className="space-y-14">
               {/* Work item 1 */}
-              <div className="margin-line pl-8">
-                <p className="text-xs uppercase tracking-[0.15em] text-accent mb-3">
-                  Campaign Analysis
-                </p>
-                <h3 className="text-2xl italic mb-4">Infinex Airdrop Breakdown</h3>
-                <p className="text-text-secondary mb-6 max-w-lg">
+              <div className="work-item">
+                <p className="work-category">Campaign Analysis</p>
+                <h3 className="work-title">Infinex Airdrop Breakdown</h3>
+                <p className="work-desc">
                   Dissected Infinex's viral airdrop rollout. Identified the mechanics
                   driving 10x engagement: gamified reveals, influencer seeding,
                   and precision FOMO triggers.
                 </p>
-                <div className="flex gap-8 text-sm">
-                  <div>
-                    <span className="text-text-muted">Impressions</span>
-                    <span className="ml-2 font-bold">850K+</span>
-                  </div>
-                  <div>
-                    <span className="text-text-muted">Engagement</span>
-                    <span className="ml-2 font-bold">12%</span>
-                  </div>
+                <div className="work-stats">
+                  <span className="stat-label">Impressions</span>
+                  <span className="stat-value">850K+</span>
+                  <span className="stat-label">Engagement</span>
+                  <span className="stat-value">12%</span>
                 </div>
               </div>
 
               {/* Work item 2 */}
-              <div className="margin-line pl-8">
-                <p className="text-xs uppercase tracking-[0.15em] text-accent mb-3">
-                  Content Strategy
-                </p>
-                <h3 className="text-2xl italic mb-4">Avalanche Content Study</h3>
-                <p className="text-text-secondary mb-6 max-w-lg">
+              <div className="work-item">
+                <p className="work-category">Content Strategy</p>
+                <h3 className="work-title">Avalanche Content Study</h3>
+                <p className="work-desc">
                   Six-month analysis of Avalanche's top-performing content.
                   Extracted winning formulas: meme formats, thread structures,
                   and timing patterns for maximum reach.
                 </p>
-                <div className="flex gap-8 text-sm">
-                  <div>
-                    <span className="text-text-muted">Reach</span>
-                    <span className="ml-2 font-bold">2.1M+</span>
-                  </div>
-                  <div>
-                    <span className="text-text-muted">Avg. Engagement</span>
-                    <span className="ml-2 font-bold">15K</span>
-                  </div>
+                <div className="work-stats">
+                  <span className="stat-label">Reach</span>
+                  <span className="stat-value">2.1M+</span>
+                  <span className="stat-label">Avg. Engagement</span>
+                  <span className="stat-value">15K</span>
                 </div>
               </div>
 
               {/* Work item 3 */}
-              <div className="margin-line pl-8">
-                <p className="text-xs uppercase tracking-[0.15em] text-accent mb-3">
-                  Viral Content
-                </p>
-                <h3 className="text-2xl italic mb-4">Meme Marketing</h3>
-                <p className="text-text-secondary mb-6 max-w-lg">
+              <div className="work-item">
+                <p className="work-category">Viral Content</p>
+                <h3 className="work-title">Meme Marketing</h3>
+                <p className="work-desc">
                   Created viral meme content that consistently outperforms industry
                   benchmarks. Developed repeatable frameworks for crypto-native
                   humor that builds community.
                 </p>
-                <div className="flex gap-8 text-sm">
-                  <div>
-                    <span className="text-text-muted">Avg. Likes</span>
-                    <span className="ml-2 font-bold">300-400</span>
-                  </div>
-                  <div>
-                    <span className="text-text-muted">vs Industry</span>
-                    <span className="ml-2 font-bold">5x</span>
-                  </div>
+                <div className="work-stats">
+                  <span className="stat-label">Avg. Likes</span>
+                  <span className="stat-value">300-400</span>
+                  <span className="stat-label">vs Industry</span>
+                  <span className="stat-value">5x</span>
                 </div>
               </div>
             </div>
@@ -165,47 +132,45 @@ export default function Home() {
       {/* Divider */}
       <div className="divider" />
 
-      {/* Services - minimal list */}
-      <section id="services" className="px-6 md:px-12 py-24 bg-alt">
+      {/* Services */}
+      <section id="services" className="px-8 md:px-16 py-20 bg-alt">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-[200px_1fr] gap-16">
+          <div className="grid lg:grid-cols-[180px_1fr] gap-12">
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-text-muted sticky top-8">
-                Services
-              </p>
+              <p className="section-label">Services</p>
             </div>
-            <div className="grid md:grid-cols-3 gap-12">
+            <div className="grid md:grid-cols-3 gap-10">
               <div>
-                <h3 className="text-xl italic mb-4">Content Strategy</h3>
-                <p className="text-text-secondary text-sm mb-6">
+                <h3 className="service-title">Content Strategy</h3>
+                <p className="service-desc">
                   Data-driven content calendars and viral post frameworks.
                   Turn your feed into a growth engine.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="service-tags">
                   <span className="tag">Threads</span>
                   <span className="tag">Memes</span>
                   <span className="tag">Visuals</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl italic mb-4">Campaign Analysis</h3>
-                <p className="text-text-secondary text-sm mb-6">
+                <h3 className="service-title">Campaign Analysis</h3>
+                <p className="service-desc">
                   Deep competitive analysis and campaign breakdowns.
                   Learn what's actually working in Web3.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="service-tags">
                   <span className="tag">Research</span>
                   <span className="tag">Reports</span>
                   <span className="tag">Strategy</span>
                 </div>
               </div>
               <div>
-                <h3 className="text-xl italic mb-4">Community Growth</h3>
-                <p className="text-text-secondary text-sm mb-6">
+                <h3 className="service-title">Community Growth</h3>
+                <p className="service-desc">
                   Organic audience building and engagement tactics.
                   Build a loyal following that converts.
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="service-tags">
                   <span className="tag">Twitter</span>
                   <span className="tag">Discord</span>
                   <span className="tag">Telegram</span>
@@ -219,29 +184,25 @@ export default function Home() {
       {/* Divider */}
       <div className="divider" />
 
-      {/* About - brief */}
-      <section id="about" className="px-6 md:px-12 py-24">
+      {/* About */}
+      <section id="about" className="px-8 md:px-16 py-20">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-[200px_1fr] gap-16">
+          <div className="grid lg:grid-cols-[180px_1fr] gap-12">
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-text-muted sticky top-8">
-                About
-              </p>
+              <p className="section-label">About</p>
             </div>
             <div className="max-w-xl">
-              <h2 className="text-3xl italic mb-8">
-                The doctor who gets marketing.
-              </h2>
-              <p className="text-text-secondary mb-6">
+              <h2 className="about-title">The doctor who gets marketing.</h2>
+              <p className="about-text">
                 Licensed medical doctor who found a second calling in Web3 marketing.
                 The same analytical rigor I apply to diagnostics, I bring to campaign strategy.
               </p>
-              <p className="text-text-secondary mb-8">
+              <p className="about-text">
                 Clinical precision in messaging. Evidence-based decisions.
                 The ability to translate complex ideas into content that resonates.
                 In crypto since 2021, building through bear markets.
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="about-tags">
                 <span className="tag">Medical Doctor</span>
                 <span className="tag">Crypto Native</span>
                 <span className="tag">Content Creator</span>
@@ -254,24 +215,20 @@ export default function Home() {
       {/* Divider */}
       <div className="divider" />
 
-      {/* Contact - simple */}
-      <section id="contact" className="px-6 md:px-12 py-24">
+      {/* Contact */}
+      <section id="contact" className="px-8 md:px-16 py-20">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-[200px_1fr] gap-16">
+          <div className="grid lg:grid-cols-[180px_1fr] gap-12">
             <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-text-muted sticky top-8">
-                Contact
-              </p>
+              <p className="section-label">Contact</p>
             </div>
             <div>
-              <h2 className="text-3xl italic mb-8">
-                Let's work together.
-              </h2>
-              <p className="text-text-secondary mb-10 max-w-md">
+              <h2 className="contact-title">Let's work together.</h2>
+              <p className="contact-text">
                 Looking for a marketer who understands Web3 culture
                 and delivers results? Reach out.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="contact-buttons">
                 <a
                   href="https://x.com/soligxbt"
                   target="_blank"
@@ -280,10 +237,7 @@ export default function Home() {
                 >
                   DM on X
                 </a>
-                <a
-                  href="mailto:alexmustapha11@gmail.com"
-                  className="btn-secondary"
-                >
+                <a href="mailto:alexmustapha11@gmail.com" className="btn-secondary">
                   Email
                 </a>
                 <a
@@ -300,15 +254,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer - minimal */}
-      <footer className="px-6 md:px-12 py-8 border-t border-border">
+      {/* Footer */}
+      <footer className="px-8 md:px-16 py-6 border-t border-border">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-text-muted text-xs">
-            2026 dr. alex
-          </p>
+          <p className="footer-text">2026 dr. alex</p>
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-green" />
-            <span className="text-text-muted text-xs">Available for projects</span>
+            <span className="status-dot" />
+            <span className="footer-text">Available for projects</span>
           </div>
         </div>
       </footer>
