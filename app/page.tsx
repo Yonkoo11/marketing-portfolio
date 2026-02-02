@@ -22,8 +22,8 @@ export default function Home() {
             <p className="classification">Marketing Profile</p>
             <h1 className="hero-name">dr. alex</h1>
             <p className="hero-tagline">
-              Medical doctor turned Web3 marketer. I bring clinical precision
-              to content strategy, campaign analysis, and community growth.
+              Medical doctor and Web3 builder. I create content that resonates,
+              understand what makes campaigns work, and build products people use.
             </p>
 
             {/* Vitals inline with hero */}
@@ -71,72 +71,73 @@ export default function Home() {
       <section id="work" className="section">
         <div className="section-inner">
           <div className="section-header">
-            <h2 className="section-title">Selected Work</h2>
-            <p className="section-subtitle">Campaign analysis and content strategy</p>
+            <h2 className="section-title">What I Do</h2>
+            <p className="section-subtitle">Content creation and community engagement in Web3</p>
           </div>
 
           <div className="work-grid">
             <article className="work-card">
               <div className="work-card-header">
-                <span className="work-category">Campaign Analysis</span>
+                <span className="work-category">Marketing Team</span>
               </div>
-              <h3 className="work-title">Infinex Airdrop Breakdown</h3>
+              <h3 className="work-title">Truth Bounty</h3>
               <p className="work-desc">
-                Dissected Infinex's viral airdrop rollout. Identified the mechanics
-                driving 10x engagement: gamified reveals, influencer seeding,
-                and precision FOMO triggers.
+                Marketing team member for Truth Bounty, a prediction markets
+                platform. Helped position and promote the project to a
+                2nd place finish in the Seedify Hackathon.
               </p>
               <div className="work-metrics">
                 <div className="metric">
-                  <span className="metric-value">850K+</span>
-                  <span className="metric-label">Impressions</span>
+                  <span className="metric-value">2nd</span>
+                  <span className="metric-label">Seedify Hackathon</span>
                 </div>
                 <div className="metric">
-                  <span className="metric-value">12%</span>
-                  <span className="metric-label">Engagement</span>
+                  <span className="metric-value">Prediction</span>
+                  <span className="metric-label">Markets</span>
                 </div>
               </div>
             </article>
 
             <article className="work-card">
               <div className="work-card-header">
-                <span className="work-category">Content Strategy</span>
+                <span className="work-category">Organic Growth</span>
               </div>
-              <h3 className="work-title">Avalanche Content Study</h3>
+              <h3 className="work-title">X Content Strategy</h3>
               <p className="work-desc">
-                Six-month analysis of Avalanche's top-performing content.
-                Extracted winning formulas: meme formats, thread structures,
-                and timing patterns.
+                Building audience through crypto-native content: market commentary,
+                memes, and timely takes. Consistent engagement through authentic
+                voice and community interaction.
               </p>
               <div className="work-metrics">
                 <div className="metric">
-                  <span className="metric-value">2.1M+</span>
-                  <span className="metric-label">Reach</span>
+                  <span className="metric-value">5M+</span>
+                  <span className="metric-label">Impressions (48hrs)</span>
                 </div>
                 <div className="metric">
-                  <span className="metric-value">15K</span>
-                  <span className="metric-label">Avg. Engagement</span>
+                  <span className="metric-value">2.1K+</span>
+                  <span className="metric-label">Followers</span>
                 </div>
               </div>
             </article>
 
             <article className="work-card">
               <div className="work-card-header">
-                <span className="work-category">Viral Content</span>
+                <span className="work-category">Builder + Marketer</span>
               </div>
-              <h3 className="work-title">Meme Marketing Playbook</h3>
+              <h3 className="work-title">Product Understanding</h3>
               <p className="work-desc">
-                Created viral meme content that consistently outperforms industry
-                benchmarks. Developed repeatable frameworks for crypto-native humor.
+                I build Web3 products, so I understand them deeply. This means
+                authentic promotion rooted in real technical knowledge,
+                not surface-level marketing speak.
               </p>
               <div className="work-metrics">
                 <div className="metric">
-                  <span className="metric-value">300-400</span>
-                  <span className="metric-label">Avg. Likes</span>
+                  <span className="metric-value">Dev</span>
+                  <span className="metric-label">Background</span>
                 </div>
                 <div className="metric">
-                  <span className="metric-value">5x</span>
-                  <span className="metric-label">vs Industry</span>
+                  <span className="metric-value">Authentic</span>
+                  <span className="metric-label">Approach</span>
                 </div>
               </div>
             </article>
@@ -148,47 +149,47 @@ export default function Home() {
       <section id="services" className="section section-alt">
         <div className="section-inner">
           <div className="section-header">
-            <h2 className="section-title">Services</h2>
-            <p className="section-subtitle">How I can help your project grow</p>
+            <h2 className="section-title">How I Can Help</h2>
+            <p className="section-subtitle">Where my skills translate to your project</p>
           </div>
 
           <div className="services-grid">
             <div className="service-card">
-              <h3 className="service-title">Content Strategy</h3>
+              <h3 className="service-title">Content Creation</h3>
               <p className="service-desc">
-                Data-driven content calendars and viral post frameworks.
-                Turn your feed into a growth engine.
+                Crypto-native content that connects. Memes, threads,
+                and commentary that speaks the language of Web3.
               </p>
               <div className="service-tags">
-                <span className="tag">Threads</span>
                 <span className="tag">Memes</span>
-                <span className="tag">Visuals</span>
+                <span className="tag">Threads</span>
+                <span className="tag">Commentary</span>
               </div>
             </div>
 
             <div className="service-card">
-              <h3 className="service-title">Campaign Analysis</h3>
+              <h3 className="service-title">Product Insight</h3>
               <p className="service-desc">
-                Deep competitive analysis and campaign breakdowns.
-                Learn what's actually working in Web3.
+                I build products, so I understand them. This means
+                authentic promotion rooted in real understanding.
               </p>
               <div className="service-tags">
-                <span className="tag">Research</span>
-                <span className="tag">Reports</span>
-                <span className="tag">Strategy</span>
+                <span className="tag">Web3</span>
+                <span className="tag">DeFi</span>
+                <span className="tag">User Focus</span>
               </div>
             </div>
 
             <div className="service-card">
-              <h3 className="service-title">Community Growth</h3>
+              <h3 className="service-title">Community Engagement</h3>
               <p className="service-desc">
-                Organic audience building and engagement tactics.
-                Build a loyal following that converts.
+                Organic presence on X/Twitter. Understanding what
+                resonates and how to participate authentically.
               </p>
               <div className="service-tags">
-                <span className="tag">Twitter</span>
-                <span className="tag">Discord</span>
-                <span className="tag">Telegram</span>
+                <span className="tag">Twitter/X</span>
+                <span className="tag">Crypto CT</span>
+                <span className="tag">Engagement</span>
               </div>
             </div>
           </div>
@@ -200,19 +201,20 @@ export default function Home() {
         <div className="section-inner">
           <div className="about-layout">
             <div className="about-content">
-              <h2 className="section-title">The doctor who gets marketing.</h2>
+              <h2 className="section-title">Builder who understands growth.</h2>
               <p className="about-text">
-                Licensed medical doctor who found a second calling in Web3 marketing.
-                The same analytical rigor I apply to diagnostics, I bring to campaign strategy.
+                Licensed medical doctor who found a calling in Web3. I build products
+                and create content. The same analytical rigor I apply to diagnostics,
+                I bring to understanding what makes things spread.
               </p>
               <p className="about-text">
-                Clinical precision in messaging. Evidence-based decisions.
-                The ability to translate complex ideas into content that resonates.
-                In crypto since 2021, building through bear markets.
+                In crypto since 2021, building through bear markets. I've shipped
+                projects, grown an audience organically, and studied what works
+                in this space. I understand products from the inside out.
               </p>
               <div className="about-tags">
                 <span className="tag">Medical Doctor</span>
-                <span className="tag">Crypto Native</span>
+                <span className="tag">Web3 Builder</span>
                 <span className="tag">Content Creator</span>
               </div>
             </div>
