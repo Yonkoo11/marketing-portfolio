@@ -37,6 +37,20 @@ html {
   background: #fffef8;
 }
 
+/* Subtle paper texture */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: -1;
+}
+
 body {
   font-family: 'Space Mono', monospace;
   background: #fffef8;
@@ -183,28 +197,30 @@ body {
 
 .vital-value {
   font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(32px, 5vw, 48px);
+  font-size: clamp(36px, 6vw, 52px);
   line-height: 1;
   color: #1a1815;
+  letter-spacing: -0.02em;
 }
 
 .vital-value.green {
   color: #2d936c;
 }
 
-/* Rotated stamp */
+/* Rotated stamp - more dramatic */
 .stamp-rotated {
   position: absolute;
   bottom: 40px;
   right: 64px;
   color: #d64045;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 13px;
   border: 3px solid #d64045;
-  padding: 12px 24px;
-  transform: rotate(-3deg);
+  padding: 14px 28px;
+  transform: rotate(-6deg);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  box-shadow: 2px 2px 0 rgba(214, 64, 69, 0.1);
 }
 
 @media (max-width: 768px) {
@@ -306,6 +322,11 @@ body {
 .work-item {
   position: relative;
   padding-left: 24px;
+  transition: transform 0.2s ease-out;
+}
+
+.work-item:hover {
+  transform: translateX(4px);
 }
 
 .work-item::before {
@@ -317,6 +338,12 @@ body {
   width: 2px;
   background: #d64045;
   opacity: 0.4;
+  transition: opacity 0.2s ease-out, width 0.2s ease-out;
+}
+
+.work-item:hover::before {
+  opacity: 0.8;
+  width: 3px;
 }
 
 .work-category {
