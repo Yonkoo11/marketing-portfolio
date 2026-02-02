@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dr. alex - Editorial Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #f7f5f0;
+      --text: #1a1a1a;
+      --accent: #c41e3a;
+      --muted: #6b6b6b;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* Editorial oversized section numbers */
+    .section-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 200px;
+      font-weight: 400;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--accent);
+      position: absolute;
+      right: 40px;
+      top: -40px;
+      opacity: 0.4;
+      line-height: 1;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      padding: 120px 80px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 600px;
+      padding-top: 80px;
+    }
+
+    .label {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 96px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+
+    .tagline {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    /* Stats row */
+    .stats {
+      display: flex;
+      gap: 64px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin-bottom: 48px;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-value.highlight { color: var(--accent); }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Hero aside */
+    .hero-aside {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: 40px;
+    }
+
+    .profile-img {
+      width: 280px;
+      height: 350px;
+      background: #ddd;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .profile-img::after {
+      content: '@SOLIGXBT';
+      position: absolute;
+      bottom: -40px;
+      right: 0;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+    }
+
+    .profile-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+
+    .stamp {
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      padding: 12px 24px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      transform: rotate(-6deg);
+      margin-top: 60px;
+    }
+
+    /* Section */
+    section {
+      padding: 120px 80px;
+      position: relative;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .section-intro {
+      padding-top: 16px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* Work cards - editorial overlap */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .work-card {
+      background: #fff;
+      padding: 48px;
+      position: relative;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 60px;
+      background: var(--accent);
+    }
+
+    .work-category {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .work-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .work-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .work-metric {
+      display: flex;
+      gap: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .metric-val {
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .metric-label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Dark section */
+    .dark {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .dark h2 { color: var(--bg); }
+    .dark .section-intro { color: rgba(255,255,255,0.5); }
+
+    /* CTA */
+    .cta-section {
+      text-align: center;
+      padding: 160px 80px;
+    }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+
+    .cta-text {
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 48px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+    }
+
+    /* Annotation style */
+    .annotation {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--accent);
+      position: absolute;
+      transform: rotate(-3deg);
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <span class="section-num">01</span>
+    <div class="hero-content">
+      <p class="label">Marketing Profile</p>
+      <h1>dr. alex</h1>
+      <p class="tagline">Medical doctor and builder. I make things people actually use, and I know how to get eyes on them.</p>
+
+      <div class="stats">
+        <div>
+          <span class="stat-value">2,142</span>
+          <span class="stat-label">Followers</span>
+        </div>
+        <div>
+          <span class="stat-value highlight">12%</span>
+          <span class="stat-label">Eng. Rate</span>
+        </div>
+        <div>
+          <span class="stat-value">2021</span>
+          <span class="stat-label">In Crypto Since</span>
+        </div>
+      </div>
+
+      <a href="#" class="btn">Work with me</a>
+    </div>
+
+    <div class="hero-aside">
+      <div class="profile-img">
+        <img src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg" alt="">
+      </div>
+      <div class="stamp">OPEN TO WORK</div>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-num">02</span>
+    <div class="section-header">
+      <h2>What I Do</h2>
+      <p class="section-intro">Marketing and product work in crypto. Real results, not agency bullshit.</p>
+    </div>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <p class="work-category">MARKETING TEAM</p>
+        <h3 class="work-title">Truth Bounty</h3>
+        <p class="work-desc">Ran marketing for Truth Bounty, a prediction markets platform. We took 2nd place at the Seedify Hackathon.</p>
+        <div class="work-metric">
+          <div>
+            <span class="metric-val">2nd</span>
+            <span class="metric-label">Seedify Hackathon</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <p class="work-category">BUILDER</p>
+        <h3 class="work-title">Ships Products</h3>
+        <p class="work-desc">I code. When I market something, I actually understand how it works under the hood. No bullshit.</p>
+        <div class="work-metric">
+          <div>
+            <span class="metric-val">Full Stack</span>
+            <span class="metric-label">Dev Background</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark cta-section">
+    <h2 class="cta-title">Let's talk.</h2>
+    <p class="cta-text">Need someone who gets crypto and can actually ship? Hit me up.</p>
+    <a href="#" class="btn">DM on X</a>
+  </section>
+</body>
+</html>

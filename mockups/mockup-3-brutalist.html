@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dr. alex - Brutalist Design</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --yellow: #ffff00;
+      --red: #ff0000;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--white);
+      color: var(--black);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Exposed grid */
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 20px 20px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Hero - massive type */
+    .hero {
+      min-height: 100vh;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 4px solid var(--black);
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .logo {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      padding: 12px 20px;
+      border: 2px solid var(--black);
+    }
+
+    .status-badge {
+      background: var(--yellow);
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      transform: rotate(3deg);
+    }
+
+    .hero-main {
+      padding: 80px 0;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      margin-bottom: 20px;
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(80px, 15vw, 200px);
+      line-height: 0.85;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    h1 .outline {
+      -webkit-text-stroke: 3px var(--black);
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 24px;
+      max-width: 600px;
+      line-height: 1.4;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 60px;
+    }
+
+    .stat {
+      border-left: 4px solid var(--black);
+      padding-left: 20px;
+    }
+
+    .stat-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .stat-num.highlight {
+      color: var(--red);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .scroll-hint {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    /* Section */
+    section {
+      padding: 80px 40px;
+      border-bottom: 4px solid var(--black);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
+    }
+
+    .section-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 120px;
+      line-height: 1;
+      -webkit-text-stroke: 2px var(--black);
+      color: transparent;
+    }
+
+    h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 48px;
+      max-width: 400px;
+    }
+
+    /* Work blocks - brutalist */
+    .work-blocks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .work-block {
+      padding: 40px;
+      border: 2px solid var(--black);
+      margin: -1px;
+      position: relative;
+    }
+
+    .work-block:hover {
+      background: var(--yellow);
+    }
+
+    .work-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 64px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      opacity: 0.1;
+    }
+
+    .work-cat {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      padding: 4px 12px;
+      background: var(--black);
+      color: var(--white);
+      display: inline-block;
+    }
+
+    .work-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .work-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      max-width: 400px;
+    }
+
+    .work-stat {
+      display: flex;
+      gap: 40px;
+    }
+
+    .work-stat-val {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px;
+    }
+
+    .work-stat-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Services - list */
+    .services-section {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .services-section h2 {
+      color: var(--white);
+    }
+
+    .services-section .section-num {
+      -webkit-text-stroke-color: var(--white);
+    }
+
+    .services-list {
+      list-style: none;
+    }
+
+    .service-item {
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      display: grid;
+      grid-template-columns: 60px 200px 1fr auto;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .service-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px;
+      color: var(--yellow);
+    }
+
+    .service-name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 24px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .service-tags {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 10px;
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.3);
+      letter-spacing: 0.1em;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: var(--yellow);
+      text-align: center;
+      padding: 120px 40px;
+    }
+
+    .cta-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 72px;
+      margin-bottom: 24px;
+    }
+
+    .cta-desc {
+      font-size: 20px;
+      margin-bottom: 48px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 20px 48px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border: 3px solid var(--black);
+      transition: all 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--black);
+    }
+
+    .btn-secondary:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-overlay"></div>
+
+  <section class="hero">
+    <div class="hero-top">
+      <div class="logo">DR.ALEX</div>
+      <div class="status-badge">OPEN TO WORK</div>
+    </div>
+
+    <div class="hero-main">
+      <span class="hero-label">MARKETING PROFILE</span>
+      <h1>
+        <span>DR.</span>
+        <span class="outline">ALEX</span>
+      </h1>
+      <p class="tagline">Medical doctor and builder. I make things people actually use, and I know how to get eyes on them.</p>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num">2,142</div>
+          <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num highlight">12%</div>
+          <div class="stat-label">Eng. Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2021</div>
+          <div class="stat-label">In Crypto</div>
+        </div>
+      </div>
+      <div class="scroll-hint">SCROLL ↓</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>WHAT I DO</h2>
+    </div>
+
+    <div class="work-blocks">
+      <div class="work-block">
+        <span class="work-num">01</span>
+        <span class="work-cat">MARKETING TEAM</span>
+        <h3 class="work-title">TRUTH BOUNTY</h3>
+        <p class="work-desc">Ran marketing for Truth Bounty, a prediction markets platform. We took 2nd place at the Seedify Hackathon.</p>
+        <div class="work-stat">
+          <div>
+            <div class="work-stat-val">2ND</div>
+            <div class="work-stat-label">Seedify Hackathon</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-block">
+        <span class="work-num">02</span>
+        <span class="work-cat">BUILDER</span>
+        <h3 class="work-title">SHIPS PRODUCTS</h3>
+        <p class="work-desc">I code. When I market something, I actually understand how it works under the hood. No bullshit.</p>
+        <div class="work-stat">
+          <div>
+            <div class="work-stat-val">FULL STACK</div>
+            <div class="work-stat-label">Dev Background</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services-section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>HOW I CAN HELP</h2>
+    </div>
+
+    <ul class="services-list">
+      <li class="service-item">
+        <span class="service-num">01</span>
+        <span class="service-name">CONTENT</span>
+        <span class="service-desc">Posts that don't read like corporate garbage.</span>
+        <div class="service-tags">
+          <span class="tag">MEMES</span>
+          <span class="tag">THREADS</span>
+        </div>
+      </li>
+      <li class="service-item">
+        <span class="service-num">02</span>
+        <span class="service-name">TECHNICAL</span>
+        <span class="service-desc">I can read code and write it.</span>
+        <div class="service-tags">
+          <span class="tag">DEFI</span>
+          <span class="tag">CONTRACTS</span>
+        </div>
+      </li>
+      <li class="service-item">
+        <span class="service-num">03</span>
+        <span class="service-name">COMMUNITY</span>
+        <span class="service-desc">Been in crypto Twitter since 2021.</span>
+        <div class="service-tags">
+          <span class="tag">TWITTER</span>
+          <span class="tag">DISCORD</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="cta-section">
+    <h2 class="cta-title">LET'S TALK.</h2>
+    <p class="cta-desc">Need someone who gets crypto and can actually ship? Hit me up.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary">DM ON X</a>
+      <a href="#" class="btn btn-secondary">EMAIL</a>
+      <a href="#" class="btn btn-secondary">TELEGRAM</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>2026 DR.ALEX</span>
+    <span>@SOLIGXBT</span>
+  </footer>
+</body>
+</html>
