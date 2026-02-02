@@ -100,28 +100,6 @@ export default function Home() {
 
             <article className="work-card">
               <div className="work-card-header">
-                <span className="work-category">Organic Growth</span>
-              </div>
-              <h3 className="work-title">X Content Strategy</h3>
-              <p className="work-desc">
-                Building audience through crypto-native content: market commentary,
-                memes, and timely takes. Consistent engagement through authentic
-                voice and community interaction.
-              </p>
-              <div className="work-metrics">
-                <div className="metric">
-                  <span className="metric-value">5M+</span>
-                  <span className="metric-label">Impressions (48hrs)</span>
-                </div>
-                <div className="metric">
-                  <span className="metric-value">2.1K+</span>
-                  <span className="metric-label">Followers</span>
-                </div>
-              </div>
-            </article>
-
-            <article className="work-card">
-              <div className="work-card-header">
                 <span className="work-category">Builder + Marketer</span>
               </div>
               <h3 className="work-title">Product Understanding</h3>
