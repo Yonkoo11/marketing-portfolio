@@ -1,27 +1,47 @@
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="flex items-start justify-between">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <span className="font-semibold">dr. alex</span>
+          <div className="flex items-center gap-8">
+            <a href="#work" className="text-sm text-text-secondary hover:text-text transition-colors">Work</a>
+            <a href="#services" className="text-sm text-text-secondary hover:text-text transition-colors">Services</a>
+            <a href="#about" className="text-sm text-text-secondary hover:text-text transition-colors">About</a>
+            <a href="#contact" className="cta-button text-sm py-2 px-4">Let's Talk</a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <header className="pt-32 pb-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_auto] gap-16 items-start">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-[11px] uppercase tracking-[0.2em] text-text-muted">
-                  Security Researcher · Smart Contract Auditor
-                </span>
-              </div>
-              <h1 className="text-[48px] font-bold tracking-tight leading-none mb-4 font-[family-name:var(--font-display)]">
-                dr. alex
+              <p className="text-accent font-medium mb-4">Web3 Growth Marketer</p>
+              <h1 className="text-[56px] lg:text-[72px] font-bold leading-[1.05] tracking-tight mb-6">
+                I turn crypto projects into
+                <span className="font-[family-name:var(--font-display)] italic font-normal"> cultural movements</span>
               </h1>
-              <p className="text-text-secondary max-w-lg leading-relaxed">
-                Medical doctor turned security researcher. Applying clinical precision
-                to smart contract auditing. Finding the vulnerabilities others miss.
+              <p className="text-xl text-text-secondary max-w-xl mb-8 leading-relaxed">
+                Viral content strategist and community builder for Web3 brands.
+                Medical precision meets creative marketing.
               </p>
+              <div className="flex flex-wrap gap-4">
+                <a href="#contact" className="cta-button">
+                  Work With Me
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+                <a href="#work" className="ghost-button">
+                  See My Work
+                </a>
+              </div>
             </div>
-            <div className="text-right">
-              <div className="w-20 h-20 border border-border rounded-lg overflow-hidden mb-3 ml-auto">
+            <div className="lg:text-right">
+              <div className="w-32 h-32 rounded-2xl overflow-hidden border-2 border-border mb-4 lg:ml-auto glow">
                 <img
                   src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg"
                   alt="dr. alex"
@@ -30,401 +50,327 @@ export default function Home() {
               </div>
               <a
                 href="https://x.com/soligxbt"
-                className="text-accent hover:underline text-sm font-medium"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-accent hover:text-accent-hover transition-colors font-medium"
               >
                 @soligxbt
               </a>
+              <p className="text-text-muted text-sm mt-1">2,100+ followers</p>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Stats Bar */}
-      <div className="border-b border-border bg-surface">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-4 divide-x divide-border">
-            <div className="py-6 pr-6">
-              <div className="text-[10px] uppercase tracking-[0.15em] text-text-muted mb-2">
-                Bugs Found
-              </div>
-              <div className="text-[32px] font-bold text-text font-[family-name:var(--font-display)]">
-                5
-              </div>
-            </div>
-            <div className="py-6 px-6">
-              <div className="text-[10px] uppercase tracking-[0.15em] text-text-muted mb-2">
-                Critical/High
-              </div>
-              <div className="text-[32px] font-bold text-critical font-[family-name:var(--font-display)]">
-                2
-              </div>
-            </div>
-            <div className="py-6 px-6">
-              <div className="text-[10px] uppercase tracking-[0.15em] text-text-muted mb-2">
-                Protocols
-              </div>
-              <div className="text-[32px] font-bold text-text font-[family-name:var(--font-display)]">
-                Uniswap V4
-              </div>
-            </div>
-            <div className="py-6 pl-6">
-              <div className="text-[10px] uppercase tracking-[0.15em] text-text-muted mb-2">
-                Focus Area
-              </div>
-              <div className="text-[32px] font-bold text-accent font-[family-name:var(--font-display)]">
-                DeFi Hooks
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 py-16">
-        {/* Section Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="text-accent">$</span>
-            <span className="text-text-muted">cat findings.log</span>
-            <span className="cursor text-accent">▋</span>
-          </div>
-          <h2 className="text-[28px] font-bold font-[family-name:var(--font-display)]">
-            Security Findings
-          </h2>
-          <p className="text-text-secondary mt-2">
-            Vulnerabilities discovered during smart contract security research
-          </p>
-        </div>
-
-        {/* Findings */}
-        <div className="space-y-8">
-          {/* Finding 1 - Critical */}
-          <div className="finding-card">
-            <div className="finding-header">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="severity-critical px-3 py-1 rounded text-[11px] font-semibold uppercase tracking-wider pulse-critical">
-                    Critical
-                  </span>
-                  <span className="text-text-muted text-sm">TokenLaunchHook.sol</span>
-                </div>
-                <h3 className="text-lg font-semibold">
-                  Per-user anti-bot tracking is broken because sender is SwapRouter, not the actual user
-                </h3>
-              </div>
-              <div className="text-right text-sm text-text-muted shrink-0">
-                <div>Impact: <span className="text-critical">High</span></div>
-                <div>Likelihood: <span className="text-critical">High</span></div>
-              </div>
-            </div>
-            <div className="finding-content">
-              <p className="text-text-secondary mb-6">
-                The hook tracks swap amounts and cooldowns per-address to enforce anti-bot limits.
-                However, the <code className="text-accent">sender</code> parameter in _beforeSwap is the SwapRouter contract,
-                not the actual user. <strong className="text-critical">ALL users share a single tracking entry.</strong>
-              </p>
-
-              <div className="code-block mb-6">
-                <div className="code-header">
-                  <span>TokenLaunchHook.sol:125-172</span>
-                  <span className="text-critical text-xs">VULNERABLE</span>
-                </div>
-                <pre className="code-content">
-<code>{`function _beforeSwap(
-    address sender,  `}<span className="comment">// ← sender is SwapRouter, NOT user</span>{`
-    PoolKey calldata key,
-    SwapParams calldata params,
-    bytes calldata
-) internal override returns (bytes4, BeforeSwapDelta, uint24) {
-    `}<span className="comment">// All users' swaps accumulate under same router address</span>{`
-    if (`}<span className="highlight">addressLastSwapBlock[sender]</span>{` > 0) {
-        uint256 blocksSinceLastSwap = block.number - addressLastSwapBlock[sender];
-        if (blocksSinceLastSwap < phaseCooldown) {
-            applyPenalty = true;
-        }
-    }
-    `}<span className="highlight">addressSwappedAmount[sender]</span>{` += swapAmount;
-    `}<span className="highlight">addressLastSwapBlock[sender]</span>{` = block.number;
-}`}</code>
-                </pre>
-              </div>
-
-              <div className="bg-surface-elevated border border-border rounded-lg p-4">
-                <div className="text-[11px] uppercase tracking-wider text-text-muted mb-2">Impact Analysis</div>
-                <ul className="text-sm text-text-secondary space-y-1">
-                  <li className="terminal-prompt">Per-user swap limits completely non-functional</li>
-                  <li className="terminal-prompt">One user can exhaust limits for ALL users</li>
-                  <li className="terminal-prompt">Attacker can grief legitimate users</li>
-                  <li className="terminal-prompt">Anti-bot protection defeated</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Finding 2 - Critical */}
-          <div className="finding-card">
-            <div className="finding-header">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="severity-critical px-3 py-1 rounded text-[11px] font-semibold uppercase tracking-wider">
-                    Critical
-                  </span>
-                  <span className="text-text-muted text-sm">TokenLaunchHook.sol</span>
-                </div>
-                <h3 className="text-lg font-semibold">
-                  _resetPerAddressTracking() only resets address(0), user limits persist across phases
-                </h3>
-              </div>
-              <div className="text-right text-sm text-text-muted shrink-0">
-                <div>Impact: <span className="text-critical">High</span></div>
-                <div>Likelihood: <span className="text-critical">High</span></div>
-              </div>
-            </div>
-            <div className="finding-content">
-              <p className="text-text-secondary mb-6">
-                When phases transition, _resetPerAddressTracking() should reset all user tracking.
-                Instead, it only resets <code className="text-accent">address(0)</code> - which is never used for actual tracking.
-              </p>
-
-              <div className="code-block mb-6">
-                <div className="code-header">
-                  <span>TokenLaunchHook.sol:189-192</span>
-                  <span className="text-critical text-xs">BUG</span>
-                </div>
-                <pre className="code-content">
-<code>{`function _resetPerAddressTracking() internal {
-    `}<span className="comment">// Only resets address(0) - never used for actual tracking</span>{`
-    `}<span className="highlight">addressSwappedAmount[address(0)] = 0;</span>{`
-    `}<span className="highlight">addressLastSwapBlock[address(0)] = 0;</span>{`
-    `}<span className="comment">// All actual tracking persists!</span>{`
-}`}</code>
-                </pre>
-              </div>
-
-              <div className="bg-surface-elevated border border-border rounded-lg p-4">
-                <div className="text-[11px] uppercase tracking-wider text-text-muted mb-2">Impact Analysis</div>
-                <ul className="text-sm text-text-secondary space-y-1">
-                  <li className="terminal-prompt">Users hitting Phase 1 limits remain limited in Phase 2</li>
-                  <li className="terminal-prompt">Phase 2's higher limits (5%) meaningless if Phase 1 amount (1%) persists</li>
-                  <li className="terminal-prompt">Defeats purpose of graduated restrictions</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Finding 3 - Medium */}
-          <div className="finding-card">
-            <div className="finding-header">
-              <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="severity-medium px-3 py-1 rounded text-[11px] font-semibold uppercase tracking-wider">
-                    Medium
-                  </span>
-                  <span className="text-text-muted text-sm">TokenLaunchHook.sol</span>
-                </div>
-                <h3 className="text-lg font-semibold">
-                  Phase boundary inconsistency between _beforeSwap and getCurrentPhase
-                </h3>
-              </div>
-              <div className="text-right text-sm text-text-muted shrink-0">
-                <div>Impact: <span className="text-medium">Medium</span></div>
-                <div>Likelihood: <span className="text-critical">High</span></div>
-              </div>
-            </div>
-            <div className="finding-content">
-              <p className="text-text-secondary mb-6">
-                The internal logic uses <code className="text-accent">&lt;=</code> for phase boundaries
-                while the view function uses <code className="text-accent">&lt;</code>, causing state inconsistency
-                at exact boundary blocks.
-              </p>
-
-              <div className="code-block mb-6">
-                <div className="code-header">
-                  <span>Comparison</span>
-                  <span className="text-medium text-xs">INCONSISTENT</span>
-                </div>
-                <pre className="code-content">
-<code>{`// _beforeSwap uses <= (lines 139-145)
-if (blocksSinceLaunch `}<span className="highlight">&lt;=</span>{` phase1Duration) { newPhase = 1; }
-
-// getCurrentPhase uses < (lines 197-202)
-if (blocksSinceLaunch `}<span className="highlight">&lt;</span>{` phase1Duration) { return 1; }`}</code>
-                </pre>
-              </div>
-
-              <div className="bg-surface-elevated border border-border rounded-lg p-4">
-                <div className="text-[11px] uppercase tracking-wider text-text-muted mb-2">Impact Analysis</div>
-                <ul className="text-sm text-text-secondary space-y-1">
-                  <li className="terminal-prompt">View functions report wrong phase at boundaries</li>
-                  <li className="terminal-prompt">Integrating contracts get incorrect state</li>
-                  <li className="terminal-prompt">Occurs at every phase transition block</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Finding 4 & 5 - Low */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="finding-card">
-              <div className="finding-header">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="severity-low px-3 py-1 rounded text-[11px] font-semibold uppercase tracking-wider">
-                      Low
-                    </span>
-                  </div>
-                  <h3 className="text-base font-semibold">
-                    Deploy script uses wrong hook flags
-                  </h3>
-                </div>
-              </div>
-              <div className="finding-content">
-                <p className="text-text-secondary text-sm mb-4">
-                  Script declares <code className="text-accent">BEFORE_INITIALIZE_FLAG</code> but
-                  contract uses <code className="text-accent">afterInitialize: true</code>. Deployment will fail.
-                </p>
-                <div className="code-block">
-                  <pre className="code-content text-xs">
-<code><span className="line-remove">- BEFORE_INITIALIZE_FLAG</span>
-<span className="line-add">+ AFTER_INITIALIZE_FLAG</span></code>
-                  </pre>
-                </div>
-              </div>
-            </div>
-
-            <div className="finding-card">
-              <div className="finding-header">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="severity-low px-3 py-1 rounded text-[11px] font-semibold uppercase tracking-wider">
-                      Low
-                    </span>
-                  </div>
-                  <h3 className="text-base font-semibold">
-                    Dead state variables never updated
-                  </h3>
-                </div>
-              </div>
-              <div className="finding-content">
-                <p className="text-text-secondary text-sm mb-4">
-                  Multiple state variables declared but never incremented, wasting gas on deployment.
-                </p>
-                <div className="code-block">
-                  <pre className="code-content text-xs">
-<code><span className="text-text-muted">// Never incremented:</span>
-totalPenaltyFeesCollected
-addressTotalSwaps
-addressPenaltyCount</code>
-                  </pre>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="section-divider" />
-
-        {/* Skills Section */}
-        <div className="mb-16">
-          <h2 className="text-[28px] font-bold font-[family-name:var(--font-display)] mb-8">
-            Technical Stack
-          </h2>
+      {/* Metrics */}
+      <section className="py-16 px-6 border-y border-border">
+        <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-6">
-            <div className="stat-card rounded-lg">
-              <div className="text-[10px] uppercase tracking-wider text-text-muted mb-3">Languages</div>
-              <div className="space-y-2 text-sm">
-                <div className="text-text">Solidity</div>
-                <div className="text-text">Rust</div>
-                <div className="text-text">TypeScript</div>
-              </div>
+            <div className="metric-card">
+              <div className="text-4xl font-bold gradient-text mb-2">400%+</div>
+              <div className="text-text-secondary text-sm">Average Engagement Rate</div>
             </div>
-            <div className="stat-card rounded-lg">
-              <div className="text-[10px] uppercase tracking-wider text-text-muted mb-3">Tools</div>
-              <div className="space-y-2 text-sm">
-                <div className="text-text">Foundry</div>
-                <div className="text-text">Slither</div>
-                <div className="text-text">Echidna</div>
-              </div>
+            <div className="metric-card">
+              <div className="text-4xl font-bold gradient-text mb-2">2.1K</div>
+              <div className="text-text-secondary text-sm">Organic Followers</div>
             </div>
-            <div className="stat-card rounded-lg">
-              <div className="text-[10px] uppercase tracking-wider text-text-muted mb-3">Protocols</div>
-              <div className="space-y-2 text-sm">
-                <div className="text-text">Uniswap V4</div>
-                <div className="text-text">ERC-4626</div>
-                <div className="text-text">Custom Hooks</div>
-              </div>
+            <div className="metric-card">
+              <div className="text-4xl font-bold gradient-text mb-2">50+</div>
+              <div className="text-text-secondary text-sm">Viral Posts Created</div>
             </div>
-            <div className="stat-card rounded-lg">
-              <div className="text-[10px] uppercase tracking-wider text-text-muted mb-3">Focus</div>
-              <div className="space-y-2 text-sm">
-                <div className="text-text">DeFi Security</div>
-                <div className="text-text">Access Control</div>
-                <div className="text-text">Logic Bugs</div>
-              </div>
+            <div className="metric-card">
+              <div className="text-4xl font-bold gradient-text mb-2">5+</div>
+              <div className="text-text-secondary text-sm">Campaigns Analyzed</div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Contact Section */}
-        <div className="bg-surface border border-border rounded-lg p-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div>
-              <h2 className="text-xl font-bold font-[family-name:var(--font-display)] mb-2">
-                Available for Security Audits
-              </h2>
-              <p className="text-text-secondary text-sm">
-                DeFi protocols, smart contracts, and hook implementations
-              </p>
+      {/* Work / Case Studies */}
+      <section id="work" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16">
+            <p className="text-accent font-medium mb-3">Selected Work</p>
+            <h2 className="text-4xl font-bold">Campaign Case Studies</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Case Study 1 */}
+            <div className="case-card">
+              <div className="case-card-image">
+                <span>∞</span>
+              </div>
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-medium px-3 py-1 bg-accent/10 text-accent rounded-full">
+                    Campaign Analysis
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Infinex Airdrop Campaign</h3>
+                <p className="text-text-secondary mb-6">
+                  Deep-dive analysis of Infinex's viral airdrop rollout strategy. Identified key mechanics
+                  driving 10x engagement: gamified reveals, influencer seeding, and FOMO triggers.
+                </p>
+                <div className="flex items-center gap-6 text-sm">
+                  <div>
+                    <div className="text-accent font-bold">850K+</div>
+                    <div className="text-text-muted">Impressions</div>
+                  </div>
+                  <div>
+                    <div className="text-accent font-bold">12%</div>
+                    <div className="text-text-muted">Engagement</div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="https://x.com/soligxbt"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link border border-border px-4 py-2 rounded-lg hover:border-accent"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-                @soligxbt
-              </a>
-              <a
-                href="mailto:alexmustapha11@gmail.com"
-                className="contact-link border border-border px-4 py-2 rounded-lg hover:border-accent"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Email
-              </a>
-              <a
-                href="https://t.me/THaFa_11"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="contact-link border border-border px-4 py-2 rounded-lg hover:border-accent"
-              >
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-                </svg>
-                Telegram
-              </a>
+
+            {/* Case Study 2 */}
+            <div className="case-card">
+              <div className="case-card-image">
+                <span>◆</span>
+              </div>
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-medium px-3 py-1 bg-accent/10 text-accent rounded-full">
+                    Content Strategy
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Avalanche Content Breakdown</h3>
+                <p className="text-text-secondary mb-6">
+                  Analyzed Avalanche's top-performing content over 6 months. Extracted winning formulas:
+                  meme formats, thread structures, and timing patterns that drove maximum reach.
+                </p>
+                <div className="flex items-center gap-6 text-sm">
+                  <div>
+                    <div className="text-accent font-bold">2.1M+</div>
+                    <div className="text-text-muted">Total Reach</div>
+                  </div>
+                  <div>
+                    <div className="text-accent font-bold">15K</div>
+                    <div className="text-text-muted">Avg. Engagement</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Case Study 3 */}
+            <div className="case-card">
+              <div className="case-card-image">
+                <span>⚡</span>
+              </div>
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-medium px-3 py-1 bg-accent/10 text-accent rounded-full">
+                    Viral Content
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Meme Marketing Playbook</h3>
+                <p className="text-text-secondary mb-6">
+                  Created viral meme content that consistently outperforms industry benchmarks.
+                  Developed repeatable frameworks for crypto-native humor that builds community.
+                </p>
+                <div className="flex items-center gap-6 text-sm">
+                  <div>
+                    <div className="text-accent font-bold">300-400</div>
+                    <div className="text-text-muted">Avg. Likes/Post</div>
+                  </div>
+                  <div>
+                    <div className="text-accent font-bold">5x</div>
+                    <div className="text-text-muted">Industry Avg.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Case Study 4 */}
+            <div className="case-card">
+              <div className="case-card-image">
+                <span>◎</span>
+              </div>
+              <div className="p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-medium px-3 py-1 bg-accent/10 text-accent rounded-full">
+                    Community Growth
+                  </span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">Personal Brand Growth</h3>
+                <p className="text-text-secondary mb-6">
+                  Grew personal following to 2K+ through organic content strategy. Zero paid promotion.
+                  Built engaged audience of crypto natives, founders, and marketers.
+                </p>
+                <div className="flex items-center gap-6 text-sm">
+                  <div>
+                    <div className="text-accent font-bold">2,142</div>
+                    <div className="text-text-muted">Followers</div>
+                  </div>
+                  <div>
+                    <div className="text-accent font-bold">100%</div>
+                    <div className="text-text-muted">Organic</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </section>
+
+      {/* Services */}
+      <section id="services" className="py-24 px-6 bg-surface">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16">
+            <p className="text-accent font-medium mb-3">Services</p>
+            <h2 className="text-4xl font-bold">How I Can Help</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="p-8 border border-border bg-bg hover:border-accent transition-colors">
+              <div className="text-4xl mb-6">📈</div>
+              <h3 className="text-xl font-semibold mb-3">Content Strategy</h3>
+              <p className="text-text-secondary mb-6">
+                Data-driven content calendars, viral post frameworks, and engagement optimization.
+                Turn your feed into a growth engine.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="service-tag">Threads</span>
+                <span className="service-tag">Memes</span>
+                <span className="service-tag">Visuals</span>
+              </div>
+            </div>
+
+            <div className="p-8 border border-border bg-bg hover:border-accent transition-colors">
+              <div className="text-4xl mb-6">🎯</div>
+              <h3 className="text-xl font-semibold mb-3">Campaign Analysis</h3>
+              <p className="text-text-secondary mb-6">
+                Deep competitive analysis, campaign breakdowns, and strategic recommendations.
+                Learn from what's working in Web3.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="service-tag">Research</span>
+                <span className="service-tag">Reports</span>
+                <span className="service-tag">Strategy</span>
+              </div>
+            </div>
+
+            <div className="p-8 border border-border bg-bg hover:border-accent transition-colors">
+              <div className="text-4xl mb-6">🌱</div>
+              <h3 className="text-xl font-semibold mb-3">Community Growth</h3>
+              <p className="text-text-secondary mb-6">
+                Organic audience building, engagement tactics, and community management.
+                Build a loyal following that converts.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <span className="service-tag">Twitter/X</span>
+                <span className="service-tag">Discord</span>
+                <span className="service-tag">Telegram</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-accent font-medium mb-3">About</p>
+              <h2 className="text-4xl font-bold mb-6">The Doctor Who Gets Marketing</h2>
+              <p className="text-text-secondary text-lg mb-6 leading-relaxed">
+                I'm a licensed medical doctor who found a second calling in Web3 marketing.
+                The same analytical rigor I apply to diagnostics, I bring to campaign strategy.
+              </p>
+              <p className="text-text-secondary mb-6 leading-relaxed">
+                My unique background gives me an edge: clinical precision in messaging,
+                evidence-based decision making, and the ability to translate complex ideas
+                into content that resonates.
+              </p>
+              <p className="text-text-secondary mb-8 leading-relaxed">
+                I've been in crypto since 2021, surviving bear markets and building through them.
+                I understand the culture because I live it.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <span className="service-tag">Medical Doctor</span>
+                <span className="service-tag">Crypto Native</span>
+                <span className="service-tag">Content Creator</span>
+                <span className="service-tag">Growth Strategist</span>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="testimonial">
+                <p className="text-lg italic text-text-secondary mb-6 pt-8">
+                  "Alex brings a unique analytical approach to marketing. His campaign breakdowns
+                  helped us identify what was actually driving results vs. vanity metrics."
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent font-bold">
+                    JD
+                  </div>
+                  <div>
+                    <div className="font-medium">James D.</div>
+                    <div className="text-text-muted text-sm">DeFi Protocol Founder</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contact" className="py-24 px-6 bg-surface">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-accent font-medium mb-3">Ready to grow?</p>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+            Let's build something
+            <span className="font-[family-name:var(--font-display)] italic font-normal"> together</span>
+          </h2>
+          <p className="text-text-secondary text-lg mb-10 max-w-xl mx-auto">
+            Looking for a marketer who understands Web3 culture and delivers results?
+            Let's talk about your project.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://x.com/soligxbt"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-button"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              DM on X
+            </a>
+            <a
+              href="mailto:alexmustapha11@gmail.com"
+              className="ghost-button"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Email Me
+            </a>
+            <a
+              href="https://t.me/THaFa_11"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ghost-button"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+              </svg>
+              Telegram
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-border">
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="flex items-center justify-between text-sm text-text-muted">
-            <span>© 2026 dr. alex</span>
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              Available for audits
-            </span>
+      <footer className="py-8 px-6 border-t border-border">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-text-muted text-sm">© 2026 dr. alex. All rights reserved.</p>
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-text-secondary text-sm">Available for projects</span>
           </div>
         </div>
       </footer>
