@@ -1,247 +1,200 @@
 export default function Home() {
   return (
-    <div className="min-h-screen diagnostic-page">
-      {/* Fixed Header */}
-      <nav className="fixed-nav">
-        <span className="nav-name">dr. alex</span>
-        <div className="nav-links">
-          <a href="#work">Work</a>
-          <a href="#services">Services</a>
-          <a href="#about">About</a>
-          <a href="#contact" className="nav-cta">Let's Talk</a>
+    <>
+      {/* Ticker tape */}
+      <div className="ticker-wrap">
+        <div className="ticker">
+          <span className="ticker-item"><span className="dot"></span> Blue Verified on X</span>
+          <span className="ticker-item"><span className="dot"></span> <span className="ticker-highlight">12% Engagement Rate</span> (Industry avg: 1-3%)</span>
+          <span className="ticker-item"><span className="dot"></span> 2nd Place Hackathon Winner</span>
+          <span className="ticker-item"><span className="dot"></span> Building Since 2021</span>
+          <span className="ticker-item"><span className="dot"></span> Full Stack Developer</span>
+          <span className="ticker-item"><span className="dot"></span> Influencer Network Access</span>
+          <span className="ticker-item"><span className="dot"></span> Blue Verified on X</span>
+          <span className="ticker-item"><span className="dot"></span> <span className="ticker-highlight">12% Engagement Rate</span> (Industry avg: 1-3%)</span>
+          <span className="ticker-item"><span className="dot"></span> 2nd Place Hackathon Winner</span>
+          <span className="ticker-item"><span className="dot"></span> Building Since 2021</span>
+          <span className="ticker-item"><span className="dot"></span> Full Stack Developer</span>
         </div>
-      </nav>
+      </div>
 
-      {/* Hero */}
-      <header className="hero">
-        <div className="hero-inner">
-          {/* Red margin line */}
-          <div className="margin-line-accent" />
-
-          <div className="hero-content">
-            <p className="classification">Marketing Profile</p>
-            <h1 className="hero-name">dr. alex</h1>
-            <p className="hero-tagline">
-              Medical doctor and builder. I make things people actually use,
-              and I know how to get eyes on them.
-            </p>
-
-            {/* Vitals inline with hero */}
-            <div className="hero-vitals">
-              <div className="vital-item">
-                <span className="vital-number">2,142</span>
-                <span className="vital-label">Followers</span>
-              </div>
-              <div className="vital-item">
-                <span className="vital-number green">12%</span>
-                <span className="vital-label">Eng. Rate</span>
-              </div>
-              <div className="vital-item">
-                <span className="vital-number">2021</span>
-                <span className="vital-label">In Crypto Since</span>
-              </div>
-            </div>
-
-            <div className="hero-actions">
-              <a href="#contact" className="btn-primary">Work with me</a>
-              <a href="#work" className="btn-secondary">View work</a>
-            </div>
+      <div className="container">
+        <header className="masthead">
+          <div className="edition-info">
+            <span>Est. 2021</span>
+            <span>Marketing Edition</span>
+            <span className="verified-badge">
+              <svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg>
+              @SOLIGXBT
+            </span>
           </div>
+          <h1 className="paper-name">The <span>Daily</span> Dispatch</h1>
+          <p className="tagline">&ldquo;All the News That&apos;s Fit to Ship&rdquo;</p>
+        </header>
 
-          {/* Avatar card */}
-          <div className="hero-aside">
-            <div className="profile-card">
-              <div className="avatar-box">
-                <img
-                  src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg"
-                  alt="dr. alex"
-                />
-              </div>
-              <div className="profile-info">
-                <span className="handle">@SOLIGXBT</span>
-                <span className="verified">Verified</span>
-              </div>
-              <div className="stamp-inline">Open to Work</div>
-            </div>
+        <nav className="nav-bar">
+          <div className="nav-links">
+            <a href="#work">Case Files</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
           </div>
-        </div>
-      </header>
+        </nav>
 
-      {/* Work */}
-      <section id="work" className="section">
-        <div className="section-inner">
-          <div className="section-header">
-            <h2 className="section-title">What I Do</h2>
-            <p className="section-subtitle">Marketing and product work in crypto</p>
-          </div>
-
-          <div className="work-grid">
-            <article className="work-card">
-              <div className="work-card-header">
-                <span className="work-category">Marketing Team</span>
-              </div>
-              <h3 className="work-title">Truth Bounty</h3>
-              <p className="work-desc">
-                Ran marketing for Truth Bounty, a prediction markets platform.
-                We took 2nd place at the Seedify Hackathon.
-              </p>
-              <div className="work-metrics">
-                <div className="metric">
-                  <span className="metric-value">2nd</span>
-                  <span className="metric-label">Seedify Hackathon</span>
+        <section className="headline-section">
+          <div className="headline-grid">
+            <article className="main-story">
+              <span className="breaking">Exclusive</span>
+              <h2 className="main-headline">Builder <em>Who Ships</em> Brings Precision to Marketing</h2>
+              <p className="byline">Profile: <strong>Dr. Alex</strong> | Marketing & Growth</p>
+              <p className="lead-paragraph">In an industry flooded with hype and empty promises, one builder brings something different: technical depth combined with marketing instinct.</p>
+              <div className="article-body">
+                <p className="drop-cap">The marketing landscape is littered with inflated metrics and vague deliverables. But Dr. Alex (@SOLIGXBT) represents a rare breed: technical enough to understand the code, creative enough to make it resonate, and disciplined enough to deliver results.</p>
+                <p>&ldquo;I make things people actually use, and I know how to get eyes on them,&rdquo; Alex states plainly. No corporate jargon. No buzzwords. Just results.</p>
+                <div className="pull-quote">
+                  When I market something, I actually understand how it works under the hood. No bullshit.
                 </div>
-                <div className="metric">
-                  <span className="metric-value">Prediction</span>
-                  <span className="metric-label">Markets</span>
-                </div>
+                <p>With a 12% engagement rate that&apos;s 4-6x the industry average, a track record that includes being part of the core marketing team behind Truth Bounty&apos;s 2nd place hackathon finish, and relationships with key influencers, the proof is in the performance.</p>
               </div>
             </article>
 
-            <article className="work-card">
-              <div className="work-card-header">
-                <span className="work-category">Builder</span>
+            <aside className="sidebar">
+              <div className="profile-box">
+                <img src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg" alt="Dr. Alex" />
+                <p className="profile-caption">Builder. Marketer. Ships products.</p>
               </div>
-              <h3 className="work-title">Ships Products</h3>
-              <p className="work-desc">
-                I code. When I market something, I actually understand
-                how it works under the hood. No bullshit.
-              </p>
-              <div className="work-metrics">
-                <div className="metric">
-                  <span className="metric-value">Dev</span>
-                  <span className="metric-label">Background</span>
+              <div className="vital-stats">
+                <h3>The Numbers</h3>
+                <div className="stat-row">
+                  <span className="stat-label">Followers</span>
+                  <div>
+                    <span className="stat-value">2,142</span>
+                    <span className="stat-context">Verified</span>
+                  </div>
                 </div>
-                <div className="metric">
-                  <span className="metric-value">Full</span>
-                  <span className="metric-label">Stack</span>
+                <div className="stat-row">
+                  <span className="stat-label">Eng. Rate</span>
+                  <div>
+                    <span className="stat-value highlight">12%</span>
+                    <span className="stat-context">4-6x avg</span>
+                  </div>
+                </div>
+                <div className="stat-row">
+                  <span className="stat-label">Building</span>
+                  <div>
+                    <span className="stat-value">2021</span>
+                    <span className="stat-context">Since</span>
+                  </div>
                 </div>
               </div>
+              <a href="#contact" className="quick-cta">
+                Let&apos;s Talk
+                <span>Response within 24hrs</span>
+              </a>
+            </aside>
+          </div>
+        </section>
+
+        <section id="work" className="columns-section">
+          <header className="section-header">
+            <h2 className="section-title">Case Files</h2>
+          </header>
+
+          <div className="stories-grid">
+            <article className="story-card">
+              <p className="story-category">Core Marketing Team</p>
+              <h3 className="story-headline">Truth Bounty: Hackathon Podium Finish</h3>
+              <p className="story-excerpt">Part of the core marketing team for @truthbounty, a startup that secured 2nd place at a major hackathon. Contributed to positioning, content strategy, and community growth.</p>
+              <span className="story-result">2nd Place — Hackathon</span>
+            </article>
+
+            <article className="story-card">
+              <p className="story-category">Technical Marketing</p>
+              <h3 className="story-headline">Builder Who Markets, Marketer Who Builds</h3>
+              <p className="story-excerpt">I don&apos;t just write about products—I can build them. Full-stack background means I speak developer and translate it for everyone else.</p>
+              <span className="story-result">Full Stack Dev</span>
+            </article>
+
+            <article className="story-card">
+              <p className="story-category">Network</p>
+              <h3 className="story-headline">Direct Access to Key Influencers</h3>
+              <p className="story-excerpt">Relationships matter. I&apos;ve built genuine connections with influencers across tech and startups—real relationships, not cold DMs.</p>
+              <span className="story-result">Network Access</span>
             </article>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services */}
-      <section id="services" className="section section-alt">
-        <div className="section-inner">
-          <div className="section-header">
-            <h2 className="section-title">How I Can Help</h2>
-            <p className="section-subtitle">What I bring to the table</p>
+        <section id="services" className="classifieds">
+          <div className="container">
+            <header className="classifieds-header">
+              <h2 className="classifieds-title">Services</h2>
+            </header>
+
+            <ul className="services-list">
+              <li className="service-ad">
+                <div className="ad-number">01</div>
+                <h3 className="ad-title">Content Strategy</h3>
+                <p className="ad-desc">Posts that don&apos;t read like corporate garbage. Memes that land, threads that educate, takes that spark conversation.</p>
+                <div className="ad-tags">
+                  <span className="ad-tag">Memes</span>
+                  <span className="ad-tag">Threads</span>
+                  <span className="ad-tag">Copywriting</span>
+                </div>
+              </li>
+              <li className="service-ad">
+                <div className="ad-number">02</div>
+                <h3 className="ad-title">Technical Content</h3>
+                <p className="ad-desc">Product explainers, technical breakdowns, documentation. Complex topics made accessible without dumbing them down.</p>
+                <div className="ad-tags">
+                  <span className="ad-tag">Product</span>
+                  <span className="ad-tag">Technical</span>
+                  <span className="ad-tag">Docs</span>
+                </div>
+              </li>
+              <li className="service-ad">
+                <div className="ad-number">03</div>
+                <h3 className="ad-title">Community & Growth</h3>
+                <p className="ad-desc">Building audiences since 2021. I know what works, what doesn&apos;t, and how to build genuine engagement—not bot farms.</p>
+                <div className="ad-tags">
+                  <span className="ad-tag">Twitter/X</span>
+                  <span className="ad-tag">Discord</span>
+                  <span className="ad-tag">Community</span>
+                </div>
+              </li>
+            </ul>
           </div>
+        </section>
 
-          <div className="services-grid">
-            <div className="service-card">
-              <h3 className="service-title">Content</h3>
-              <p className="service-desc">
-                Posts that don't read like corporate garbage.
-                Memes, threads, takes. Stuff people actually engage with.
-              </p>
-              <div className="service-tags">
-                <span className="tag">Memes</span>
-                <span className="tag">Threads</span>
-                <span className="tag">Takes</span>
-              </div>
-            </div>
-
-            <div className="service-card">
-              <h3 className="service-title">Technical Depth</h3>
-              <p className="service-desc">
-                I can read code and write it. When I explain your product,
-                I know what I'm talking about.
-              </p>
-              <div className="service-tags">
-                <span className="tag">DeFi</span>
-                <span className="tag">Smart Contracts</span>
-                <span className="tag">Product</span>
-              </div>
-            </div>
-
-            <div className="service-card">
-              <h3 className="service-title">Community</h3>
-              <p className="service-desc">
-                Been in crypto Twitter since 2021.
-                I know how the game works.
-              </p>
-              <div className="service-tags">
-                <span className="tag">Twitter/X</span>
-                <span className="tag">CT</span>
-                <span className="tag">Discord</span>
-              </div>
-            </div>
+        <section className="testimonial-section">
+          <div className="container">
+            <blockquote className="testimonial-quote">
+              Alex brings a rare combination: deep technical understanding and the ability to communicate it clearly. That&apos;s invaluable.
+            </blockquote>
+            <p className="testimonial-author">— Truth Bounty Team</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* About */}
-      <section id="about" className="section">
-        <div className="section-inner">
-          <div className="about-layout">
-            <div className="about-content">
-              <h2 className="section-title">Doctor who builds.</h2>
-              <p className="about-text">
-                Licensed MD. Got into crypto in 2021 and started building.
-                Survived the bear market by shipping instead of complaining.
-              </p>
-              <p className="about-text">
-                I code, I create content, and I understand marketing because
-                I've had to market my own projects. No agency background,
-                just real experience getting things in front of people.
-              </p>
-              <div className="about-tags">
-                <span className="tag">Medical Doctor</span>
-                <span className="tag">Builder</span>
-                <span className="tag">Content</span>
-              </div>
+        <section id="contact" className="contact-banner">
+          <p className="contact-label">Currently Accepting Projects</p>
+          <h2 className="contact-headline">Let&apos;s make something people talk about.</h2>
+          <p className="contact-subhead">Looking for marketing that actually converts? Let&apos;s discuss your project. I respond to every serious inquiry within 24 hours.</p>
+          <div className="contact-links">
+            <a href="https://twitter.com/soligxbt" className="contact-link primary">DM on X →</a>
+            <a href="mailto:alexmustapha11@gmail.com" className="contact-link">Email</a>
+            <a href="https://t.me/THaFa_11" className="contact-link">Telegram</a>
+          </div>
+        </section>
+
+        <footer>
+          <div className="footer-grid">
+            <div className="footer-left">© 2026 Dr. Alex — Built with precision.</div>
+            <div className="footer-links">
+              <a href="https://twitter.com/soligxbt">@SOLIGXBT</a>
+              <a href="mailto:alexmustapha11@gmail.com">Email</a>
+              <a href="https://t.me/THaFa_11">Telegram</a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="contact" className="section section-dark">
-        <div className="section-inner">
-          <div className="contact-layout">
-            <div className="contact-content">
-              <h2 className="contact-title">Let's talk.</h2>
-              <p className="contact-text">
-                Need someone who gets crypto and can actually ship? Hit me up.
-              </p>
-              <div className="contact-buttons">
-                <a
-                  href="https://x.com/soligxbt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary"
-                >
-                  DM on X
-                </a>
-                <a href="mailto:alexmustapha11@gmail.com" className="btn-secondary">
-                  Email
-                </a>
-                <a
-                  href="https://t.me/THaFa_11"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-secondary"
-                >
-                  Telegram
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-inner">
-          <p className="footer-text">2026 dr. alex</p>
-          <div className="footer-status">
-            <span className="status-dot" />
-            <span>Available for projects</span>
-          </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }
