@@ -44,7 +44,7 @@ export default function Home() {
           <div className="headline-grid">
             <article className="main-story">
               <span className="breaking">Exclusive</span>
-              <h2 className="main-headline">Builder <em>Who Ships</em> Brings Precision to Marketing</h2>
+              <h2 className="main-headline">From Code to Campaign: <em>A Builder's Approach</em></h2>
               <p className="byline">Profile: <strong>Dr. Alex</strong> | Marketing & Growth</p>
               <p className="lead-paragraph">In an industry flooded with hype and empty promises, one builder brings something different: technical depth combined with marketing instinct.</p>
               <div className="article-body">
