@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DR. ALEX — Noir</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #0a0a0a;
+      --charcoal: #151515;
+      --smoke: #1f1f1f;
+      --silver: #888;
+      --light: #e8e8e8;
+      --white: #fff;
+      --gold: #c9a227;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 20px rgba(201, 162, 39, 0.3); }
+      50% { text-shadow: 0 0 40px rgba(201, 162, 39, 0.5); }
+    }
+
+    @keyframes filmGrain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-1%, -1%); }
+      20% { transform: translate(1%, 1%); }
+      30% { transform: translate(-1%, 1%); }
+      40% { transform: translate(1%, -1%); }
+      50% { transform: translate(-1%, 0); }
+      60% { transform: translate(1%, 0); }
+      70% { transform: translate(0, 1%); }
+      80% { transform: translate(0, -1%); }
+      90% { transform: translate(1%, 1%); }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background: var(--black);
+      color: var(--light);
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* Film grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -50%;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 10000;
+      animation: filmGrain 0.5s steps(10) infinite;
+    }
+
+    /* Vignette */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* === HEADER === */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      mix-blend-mode: difference;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.3em;
+      color: var(--white);
+    }
+
+    nav {
+      display: flex;
+      gap: 48px;
+    }
+
+    nav a {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--silver);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--black) 0%, var(--charcoal) 50%, var(--black) 100%);
+    }
+
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, transparent 0%, transparent 49%, rgba(255,255,255,0.02) 50%, transparent 51%, transparent 100%);
+      background-size: 100px 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 48px;
+      animation: fadeUp 1s ease-out;
+    }
+
+    .hero-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(100px, 20vw, 280px);
+      line-height: 0.85;
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+      color: var(--white);
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-title .dr {
+      font-size: 0.4em;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    .hero-tagline {
+      font-size: 18px;
+      color: var(--silver);
+      max-width: 500px;
+      margin: 0 auto 48px;
+      font-style: italic;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      padding-top: 48px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .stat-value.gold {
+      color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-top: 8px;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+
+    .scroll-cue::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin: 16px auto 0;
+    }
+
+    /* === SECTIONS === */
+    section {
+      padding: 160px 48px;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 64px;
+    }
+
+    /* === WORK === */
+    .work-section {
+      background: var(--charcoal);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .work-card {
+      background: var(--charcoal);
+      padding: 64px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .work-card:hover::before {
+      transform: translateX(0);
+    }
+
+    .work-card:hover {
+      background: var(--smoke);
+    }
+
+    .work-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      color: rgba(255,255,255,0.03);
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      line-height: 1;
+    }
+
+    .work-category {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .work-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--white);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .work-desc {
+      color: var(--silver);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 400px;
+    }
+
+    .work-result {
+      display: flex;
+      gap: 32px;
+    }
+
+    .result-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--white);
+    }
+
+    .result-label {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+
+    /* === SERVICES === */
+    .services-section {
+      background: var(--black);
+    }
+
+    .services-list {
+      list-style: none;
+      max-width: 800px;
+    }
+
+    .service-item {
+      padding: 48px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: grid;
+      grid-template-columns: 80px 200px 1fr;
+      gap: 48px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .service-item:hover {
+      padding-left: 24px;
+      border-color: var(--gold);
+    }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--gold);
+    }
+
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+
+    .service-desc {
+      color: var(--silver);
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    /* === CTA === */
+    .cta-section {
+      background: linear-gradient(to bottom, var(--charcoal), var(--black));
+      text-align: center;
+      padding: 200px 48px;
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 96px;
+      color: var(--white);
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .cta-subtitle {
+      color: var(--silver);
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 48px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 18px 48px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .btn-primary:hover {
+      background: var(--white);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* === FOOTER === */
+    footer {
+      padding: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-left {
+      font-size: 11px;
+      color: var(--silver);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      color: var(--silver);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: 1fr; }
+      .service-item { grid-template-columns: 60px 1fr; }
+      .service-desc { display: none; }
+      .hero-stats { flex-direction: column; gap: 32px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">DR. ALEX</div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Marketing Dossier</p>
+      <h1 class="hero-title">
+        <span class="dr">DR.</span>
+        <span>ALEX</span>
+      </h1>
+      <p class="hero-tagline">Medical doctor and builder. I make things people actually use, and I know how to get eyes on them.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">2,142</div>
+          <div class="stat-label">Followers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value gold">12%</div>
+          <div class="stat-label">Eng. Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2021</div>
+          <div class="stat-label">In Crypto</div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <section id="work" class="work-section">
+    <p class="section-label">Case Files</p>
+    <h2 class="section-title">WHAT I DO</h2>
+
+    <div class="work-grid">
+      <article class="work-card">
+        <span class="work-number">01</span>
+        <p class="work-category">Marketing Team</p>
+        <h3 class="work-title">TRUTH BOUNTY</h3>
+        <p class="work-desc">Ran marketing for Truth Bounty, a prediction markets platform. We took 2nd place at the Seedify Hackathon.</p>
+        <div class="work-result">
+          <div>
+            <div class="result-value">2ND</div>
+            <div class="result-label">Seedify Hackathon</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <span class="work-number">02</span>
+        <p class="work-category">Builder</p>
+        <h3 class="work-title">SHIPS PRODUCTS</h3>
+        <p class="work-desc">I code. When I market something, I actually understand how it works under the hood. No bullshit.</p>
+        <div class="work-result">
+          <div>
+            <div class="result-value">FULL STACK</div>
+            <div class="result-label">Dev Background</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="services" class="services-section">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title">HOW I HELP</h2>
+
+    <ul class="services-list">
+      <li class="service-item">
+        <span class="service-num">01</span>
+        <span class="service-name">CONTENT</span>
+        <span class="service-desc">Posts that don't read like corporate garbage. Memes, threads, takes.</span>
+      </li>
+      <li class="service-item">
+        <span class="service-num">02</span>
+        <span class="service-name">TECHNICAL</span>
+        <span class="service-desc">I can read code and write it. DeFi, smart contracts, the real stuff.</span>
+      </li>
+      <li class="service-item">
+        <span class="service-num">03</span>
+        <span class="service-name">COMMUNITY</span>
+        <span class="service-desc">Been in crypto Twitter since 2021. I know how this game works.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <h2 class="cta-title">LET'S TALK</h2>
+    <p class="cta-subtitle">Need someone who gets crypto and can actually ship?</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary">DM ON X</a>
+      <a href="#" class="btn btn-secondary">EMAIL</a>
+      <a href="#" class="btn btn-secondary">TELEGRAM</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">© 2026 DR. ALEX</div>
+    <div class="footer-links">
+      <a href="#">@SOLIGXBT</a>
+      <a href="#">alexmustapha11@gmail.com</a>
+      <a href="#">t.me/THaFa_11</a>
+    </div>
+  </footer>
+</body>
+</html>
