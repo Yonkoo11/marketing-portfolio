@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DR. ALEX — Marketing Dossier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --parchment: #f8f6f1;
+      --ink: #1a1a1a;
+      --ink-light: #4a4a4a;
+      --ink-faded: #8a8a8a;
+      --vermillion: #e63946;
+      --stamp-red: #c1121f;
+      --margin-line: #e8e4dd;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes stampIn {
+      0% { transform: rotate(-12deg) scale(1.5); opacity: 0; }
+      60% { transform: rotate(-12deg) scale(0.95); opacity: 1; }
+      100% { transform: rotate(-12deg) scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    @keyframes drawLine {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'IBM Plex Mono', monospace;
+      background: var(--parchment);
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Paper texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* Red margin line - like a legal pad */
+    .margin-line {
+      position: fixed;
+      left: 80px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--vermillion);
+      opacity: 0.15;
+      z-index: 10;
+    }
+
+    /* === HEADER === */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(to bottom, var(--parchment) 60%, transparent);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .logo span {
+      color: var(--vermillion);
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--vermillion);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--ink);
+      color: var(--parchment);
+      padding: 12px 28px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--vermillion);
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 48px 80px 120px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .file-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .file-label span {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+    }
+
+    .file-label::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--vermillion);
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(72px, 10vw, 140px);
+      font-weight: 400;
+      line-height: 0.9;
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .first-name {
+      display: block;
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .hero-title .last-name {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--ink);
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 48px;
+      max-width: 480px;
+      line-height: 1.5;
+    }
+
+    /* Vitals Strip */
+    .vitals {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid var(--margin-line);
+      border-bottom: 1px solid var(--margin-line);
+      padding: 32px 0;
+      margin-bottom: 48px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .vital {
+      flex: 1;
+      padding: 0 32px;
+      border-left: 1px solid var(--margin-line);
+    }
+
+    .vital:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .vital-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .vital-value.accent {
+      color: var(--vermillion);
+    }
+
+    .vital-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .btn {
+      padding: 18px 40px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--ink);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--parchment);
+    }
+
+    .btn-primary:hover {
+      background: var(--vermillion);
+      border-color: var(--vermillion);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .btn-secondary:hover {
+      background: var(--ink);
+      color: var(--parchment);
+    }
+
+    /* Hero Aside - Profile Card */
+    .hero-aside {
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    .profile-card {
+      background: #fff;
+      border: 1px solid var(--margin-line);
+      padding: 24px;
+      position: relative;
+    }
+
+    .profile-card::before {
+      content: 'SUBJECT FILE';
+      position: absolute;
+      top: -10px;
+      left: 24px;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      background: var(--parchment);
+      padding: 0 12px;
+      color: var(--ink-faded);
+    }
+
+    .profile-image {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #e8e4dd;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%) contrast(1.1);
+      transition: filter 0.4s ease;
+    }
+
+    .profile-card:hover .profile-image img {
+      filter: grayscale(0%) contrast(1);
+    }
+
+    .profile-handle {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .profile-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--ink-faded);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* Stamp */
+    .stamp {
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: rotate(-12deg);
+      border: 3px solid var(--vermillion);
+      padding: 8px 20px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--vermillion);
+      background: var(--parchment);
+      animation: stampIn 0.5s ease-out 0.8s both;
+    }
+
+    /* Section Number */
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 200px;
+      font-weight: 400;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--margin-line);
+      position: absolute;
+      right: 48px;
+      top: -60px;
+      z-index: -1;
+      user-select: none;
+    }
+
+    /* === SECTIONS === */
+    section {
+      padding: 120px 48px 120px 120px;
+      position: relative;
+    }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+      padding-top: 16px;
+      position: relative;
+    }
+
+    .section-label::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--vermillion);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--ink-light);
+    }
+
+    /* === WORK / CASE STUDIES === */
+    .case-studies {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .case-card {
+      background: #fff;
+      border: 1px solid var(--margin-line);
+      padding: 40px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .case-card:hover {
+      border-color: var(--vermillion);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .case-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--vermillion);
+      transition: height 0.3s ease;
+    }
+
+    .case-card:hover::before {
+      height: 100%;
+    }
+
+    .case-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      color: var(--margin-line);
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      line-height: 1;
+    }
+
+    .case-category {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vermillion);
+      margin-bottom: 16px;
+    }
+
+    .case-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .case-desc {
+      color: var(--ink-light);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .case-metrics {
+      display: flex;
+      gap: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--margin-line);
+    }
+
+    .metric-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      display: block;
+    }
+
+    .metric-label {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+    }
+
+    /* === SERVICES / DIAGNOSTIC === */
+    .services-section {
+      background: var(--ink);
+      color: var(--parchment);
+    }
+
+    .services-section .section-label {
+      color: rgba(255,255,255,0.4);
+    }
+
+    .services-section .section-label::before {
+      background: var(--vermillion);
+    }
+
+    .services-section .section-title {
+      color: var(--parchment);
+    }
+
+    .services-section .section-num {
+      -webkit-text-stroke-color: rgba(255,255,255,0.05);
+    }
+
+    .services-list {
+      list-style: none;
+      max-width: 900px;
+    }
+
+    .service-item {
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      display: grid;
+      grid-template-columns: 60px 220px 1fr auto;
+      align-items: center;
+      gap: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .service-item:hover {
+      padding-left: 20px;
+      border-color: var(--vermillion);
+    }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--vermillion);
+    }
+
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .service-tags {
+      display: flex;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* === CTA === */
+    .cta-section {
+      background: var(--parchment);
+      text-align: center;
+      padding: 160px 48px;
+      position: relative;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: var(--margin-line);
+    }
+
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-style: italic;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    .cta-subtitle {
+      color: var(--ink-light);
+      font-size: 16px;
+      margin-bottom: 48px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    /* === FOOTER === */
+    footer {
+      padding: 48px 48px 48px 120px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--margin-line);
+    }
+
+    .footer-left {
+      font-size: 12px;
+      color: var(--ink-faded);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--vermillion);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 40px;
+      right: 48px;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--ink-faded);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .scroll-indicator::after {
+      content: '';
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, var(--vermillion), transparent);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .margin-line { display: none; }
+      section { padding-left: 48px; }
+      footer { padding-left: 48px; }
+      .hero { grid-template-columns: 1fr; padding-left: 48px; }
+      .hero-aside { display: none; }
+      .section-header { grid-template-columns: 1fr; gap: 24px; }
+      .case-studies { grid-template-columns: 1fr; }
+      .service-item { grid-template-columns: 40px 1fr; }
+      .service-desc, .service-tags { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="margin-line"></div>
+
+  <header>
+    <div class="logo">Dr.<span>Alex</span></div>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+      <button class="nav-cta">Let's Talk</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="section-num">01</span>
+
+    <div class="hero-content">
+      <div class="file-label">
+        <span>Marketing Dossier</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="first-name">dr.</span>
+        <span class="last-name">alex</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Medical doctor and builder. I make things people actually use, and I know how to get eyes on them.
+      </p>
+
+      <div class="vitals">
+        <div class="vital">
+          <span class="vital-value">2,142</span>
+          <span class="vital-label">Followers</span>
+        </div>
+        <div class="vital">
+          <span class="vital-value accent">12%</span>
+          <span class="vital-label">Eng. Rate</span>
+        </div>
+        <div class="vital">
+          <span class="vital-value">2021</span>
+          <span class="vital-label">In Crypto Since</span>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Work with me</a>
+        <a href="#work" class="btn btn-secondary">View Work</a>
+      </div>
+    </div>
+
+    <aside class="hero-aside">
+      <div class="profile-card">
+        <div class="profile-image">
+          <img src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg" alt="dr. alex">
+        </div>
+        <div class="profile-handle">@SOLIGXBT</div>
+        <div class="profile-status">
+          <span class="status-dot"></span>
+          <span>Available for work</span>
+        </div>
+        <div class="stamp">VERIFIED</div>
+      </div>
+    </aside>
+  </section>
+
+  <section id="work">
+    <span class="section-num">02</span>
+
+    <div class="section-header">
+      <div class="section-label">Case Studies</div>
+      <h2 class="section-title">What I Do</h2>
+    </div>
+
+    <div class="case-studies">
+      <article class="case-card">
+        <span class="case-number">01</span>
+        <p class="case-category">Marketing Team</p>
+        <h3 class="case-title">Truth Bounty</h3>
+        <p class="case-desc">Ran marketing for Truth Bounty, a prediction markets platform. We took 2nd place at the Seedify Hackathon.</p>
+        <div class="case-metrics">
+          <div>
+            <span class="metric-value">2nd</span>
+            <span class="metric-label">Seedify Hackathon</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card">
+        <span class="case-number">02</span>
+        <p class="case-category">Builder</p>
+        <h3 class="case-title">Ships Products</h3>
+        <p class="case-desc">I code. When I market something, I actually understand how it works under the hood. No bullshit.</p>
+        <div class="case-metrics">
+          <div>
+            <span class="metric-value">Full Stack</span>
+            <span class="metric-label">Dev Background</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="services" class="services-section">
+    <span class="section-num">03</span>
+
+    <div class="section-header">
+      <div class="section-label">Diagnostic</div>
+      <h2 class="section-title">How I <em>Help</em></h2>
+    </div>
+
+    <ul class="services-list">
+      <li class="service-item">
+        <span class="service-num">01</span>
+        <span class="service-name">Content</span>
+        <span class="service-desc">Posts that don't read like corporate garbage.</span>
+        <div class="service-tags">
+          <span class="tag">Memes</span>
+          <span class="tag">Threads</span>
+        </div>
+      </li>
+      <li class="service-item">
+        <span class="service-num">02</span>
+        <span class="service-name">Technical</span>
+        <span class="service-desc">I can read code and write it.</span>
+        <div class="service-tags">
+          <span class="tag">DeFi</span>
+          <span class="tag">Contracts</span>
+        </div>
+      </li>
+      <li class="service-item">
+        <span class="service-num">03</span>
+        <span class="service-name">Community</span>
+        <span class="service-desc">Been in crypto Twitter since 2021.</span>
+        <div class="service-tags">
+          <span class="tag">Twitter</span>
+          <span class="tag">Discord</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact" class="cta-section">
+    <h2 class="cta-title">Let's talk.</h2>
+    <p class="cta-subtitle">Need someone who gets crypto and can actually ship? Hit me up.</p>
+    <div class="cta-buttons">
+      <a href="#" class="btn btn-primary">DM on X</a>
+      <a href="#" class="btn btn-secondary">Email</a>
+      <a href="#" class="btn btn-secondary">Telegram</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">© 2026 Dr. Alex</div>
+    <div class="footer-links">
+      <a href="#">@SOLIGXBT</a>
+      <a href="#">alexmustapha11@gmail.com</a>
+      <a href="#">t.me/THaFa_11</a>
+    </div>
+  </footer>
+
+  <div class="scroll-indicator">SCROLL</div>
+</body>
+</html>
