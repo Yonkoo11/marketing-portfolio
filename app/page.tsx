@@ -43,10 +43,9 @@ export default function Home() {
         <section className="headline-section">
           <div className="headline-grid">
             <article className="main-story">
-              <span className="breaking">Exclusive</span>
-              <h2 className="main-headline">From Code to Campaign: <em>A Builder's Approach</em></h2>
+              <h2 className="main-headline">From Code to Campaign: <em>A Builder&apos;s Approach</em></h2>
               <p className="byline">Profile: <strong>Dr. Alex</strong> | Marketing & Growth</p>
-              <p className="lead-paragraph">In an industry flooded with hype and empty promises, one builder brings something different: technical depth combined with marketing instinct.</p>
+              <p className="lead-paragraph">Most marketers talk about products. I build them first, then figure out how to get people to care.</p>
               <div className="article-body">
                 <p className="drop-cap">The marketing landscape is littered with inflated metrics and vague deliverables. But Dr. Alex (@SOLIGXBT) represents a rare breed: technical enough to understand the code, creative enough to make it resonate, and disciplined enough to deliver results.</p>
                 <p>&ldquo;I make things people actually use, and I know how to get eyes on them,&rdquo; Alex states plainly. No corporate jargon. No buzzwords. Just results.</p>
@@ -86,10 +85,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <a href="#contact" className="quick-cta">
-                Let&apos;s Talk
-                <span>Response within 24hrs</span>
-              </a>
             </aside>
           </div>
         </section>
@@ -114,12 +109,6 @@ export default function Home() {
               <span className="story-result">Full Stack Dev</span>
             </article>
 
-            <article className="story-card">
-              <p className="story-category">Network</p>
-              <h3 className="story-headline">Direct Access to Key Influencers</h3>
-              <p className="story-excerpt">Relationships matter. I&apos;ve built genuine connections with influencers across tech and startups—real relationships, not cold DMs.</p>
-              <span className="story-result">Network Access</span>
-            </article>
           </div>
         </section>
 
@@ -161,15 +150,6 @@ export default function Home() {
                 </div>
               </li>
             </ul>
-          </div>
-        </section>
-
-        <section className="testimonial-section">
-          <div className="container">
-            <blockquote className="testimonial-quote">
-              Alex brings a rare combination: deep technical understanding and the ability to communicate it clearly. That&apos;s invaluable.
-            </blockquote>
-            <p className="testimonial-author">— Truth Bounty Team</p>
           </div>
         </section>
 
