@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE DAILY DISPATCH — Dr. Alex</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+  <title>THE DAILY DISPATCH — Dr. Alex | Crypto Marketing</title>
+  <meta name="description" content="Medical doctor turned crypto marketer. I make things people actually use, and I know how to get eyes on them. Currently accepting new clients.">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -15,11 +16,31 @@
       --ink-faded: #8a857d;
       --rule: #d4cfc4;
       --accent: #8b0000;
+      --success: #1a5f2a;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -31,7 +52,7 @@
       animation: fadeIn 0.6s ease;
     }
 
-    /* Aged paper texture */
+    /* Paper texture */
     body::before {
       content: '';
       position: fixed;
@@ -47,6 +68,43 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
+    }
+
+    /* === TICKER TAPE === */
+    .ticker-wrap {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 10px 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .ticker {
+      display: flex;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 48px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .ticker-item .dot {
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    .ticker-highlight {
+      color: #ff6b6b;
+      font-weight: 700;
     }
 
     /* === MASTHEAD === */
@@ -77,6 +135,19 @@
       margin-bottom: 16px;
     }
 
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #1d9bf0;
+    }
+
+    .verified-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
     .paper-name {
       font-family: 'Playfair Display', serif;
       font-size: clamp(48px, 8vw, 96px);
@@ -101,23 +172,47 @@
     /* === NAV BAR === */
     .nav-bar {
       display: flex;
-      justify-content: center;
-      gap: 32px;
+      justify-content: space-between;
+      align-items: center;
       padding: 12px 0;
       border-bottom: 1px solid var(--rule);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
       font-size: 11px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
-    .nav-bar a {
+    .nav-links a {
       color: var(--ink-light);
       text-decoration: none;
       transition: color 0.2s;
     }
 
-    .nav-bar a:hover {
+    .nav-links a:hover {
       color: var(--accent);
+    }
+
+    .availability {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .availability-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
     }
 
     /* === HEADLINE SECTION === */
@@ -128,13 +223,14 @@
 
     .headline-grid {
       display: grid;
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 340px;
       gap: 48px;
     }
 
     .main-story {
       border-right: 1px solid var(--rule);
       padding-right: 48px;
+      animation: slideIn 0.6s ease-out 0.2s both;
     }
 
     .breaking {
@@ -151,7 +247,7 @@
 
     .main-headline {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 5vw, 64px);
+      font-size: clamp(32px, 4.5vw, 56px);
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 16px;
@@ -177,9 +273,11 @@
 
     .lead-paragraph {
       font-size: 20px;
-      line-height: 1.6;
+      line-height: 1.5;
       margin-bottom: 24px;
       font-style: italic;
+      border-left: 3px solid var(--accent);
+      padding-left: 20px;
     }
 
     .article-body {
@@ -204,17 +302,55 @@
       color: var(--accent);
     }
 
+    /* Pull quote */
+    .pull-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-style: italic;
+      text-align: center;
+      padding: 32px 24px;
+      margin: 24px 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+      break-inside: avoid;
+    }
+
+    .pull-quote::before {
+      content: '"';
+      font-size: 48px;
+      color: var(--accent);
+      display: block;
+      line-height: 0.5;
+      margin-bottom: 8px;
+    }
+
     /* Sidebar */
     .sidebar {
       display: flex;
       flex-direction: column;
-      gap: 32px;
+      gap: 24px;
+      animation: slideIn 0.6s ease-out 0.4s both;
     }
 
     .profile-box {
       border: 1px solid var(--ink);
       padding: 20px;
       text-align: center;
+      position: relative;
+    }
+
+    .md-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      padding: 4px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
     }
 
     .profile-box img {
@@ -223,6 +359,11 @@
       object-fit: cover;
       filter: grayscale(100%) contrast(1.1);
       margin-bottom: 16px;
+      transition: filter 0.4s ease;
+    }
+
+    .profile-box:hover img {
+      filter: grayscale(0%) contrast(1);
     }
 
     .profile-caption {
@@ -239,8 +380,8 @@
 
     .vital-stats h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 14px;
-      letter-spacing: 0.15em;
+      font-size: 12px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       margin-bottom: 16px;
       padding-bottom: 8px;
@@ -250,7 +391,8 @@
     .stat-row {
       display: flex;
       justify-content: space-between;
-      padding: 8px 0;
+      align-items: center;
+      padding: 10px 0;
       border-bottom: 1px dotted rgba(255,255,255,0.1);
     }
 
@@ -259,7 +401,7 @@
     }
 
     .stat-label {
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       opacity: 0.6;
@@ -267,7 +409,7 @@
 
     .stat-value {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
     }
 
@@ -275,15 +417,104 @@
       color: #ff6b6b;
     }
 
-    /* === COLUMNS SECTION === */
+    .stat-context {
+      font-size: 9px;
+      opacity: 0.5;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Quick CTA */
+    .quick-cta {
+      background: var(--accent);
+      color: var(--paper);
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    .quick-cta:hover {
+      background: #a00;
+    }
+
+    .quick-cta span {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      opacity: 0.8;
+      margin-top: 4px;
+      letter-spacing: 0.1em;
+    }
+
+    /* === VALUE PROP SECTION === */
+    .value-section {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--rule);
+      background: #fff;
+    }
+
+    .value-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .value-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .value-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .value-card {
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .value-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .value-card p {
+      font-size: 14px;
+      color: var(--ink-light);
+      line-height: 1.6;
+    }
+
+    /* === CASE FILES === */
     .columns-section {
-      padding: 48px 0;
+      padding: 64px 0;
       border-bottom: 1px solid var(--rule);
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .section-title {
@@ -315,11 +546,31 @@
       gap: 0;
     }
 
+    .stories-grid.four-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     .story-card {
       padding: 32px;
       border: 1px solid var(--rule);
       margin: -0.5px;
       transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .story-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .story-card:hover::before {
+      width: 100%;
     }
 
     .story-card:hover {
@@ -338,9 +589,9 @@
 
     .story-headline {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.3;
       margin-bottom: 12px;
     }
 
@@ -348,25 +599,30 @@
       color: var(--ink-light);
       font-size: 14px;
       line-height: 1.6;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
-    .story-meta {
+    .story-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 8px 16px;
       font-size: 11px;
-      color: var(--ink-faded);
-      text-transform: uppercase;
+      font-weight: 700;
       letter-spacing: 0.1em;
     }
 
-    /* === CLASSIFIEDS === */
+    /* === SERVICES === */
     .classifieds {
-      padding: 48px 0;
+      padding: 64px 0;
       background: linear-gradient(to bottom, var(--paper), #ebe7dc);
     }
 
     .classifieds-header {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .classifieds-title {
@@ -387,62 +643,156 @@
     }
 
     .service-ad {
-      border: 1px dashed var(--rule);
-      padding: 24px;
-      text-align: center;
-      transition: all 0.2s;
+      border: 1px solid var(--rule);
+      padding: 32px 24px;
+      background: var(--paper);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .service-ad::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background: var(--ink);
+      transition: height 0.3s ease;
+      z-index: 0;
+    }
+
+    .service-ad:hover::before {
+      height: 100%;
     }
 
     .service-ad:hover {
-      border-style: solid;
-      border-color: var(--accent);
+      border-color: var(--ink);
+    }
+
+    .service-ad:hover .ad-number,
+    .service-ad:hover .ad-title,
+    .service-ad:hover .ad-desc,
+    .service-ad:hover .ad-tags {
+      color: var(--paper);
+      position: relative;
+      z-index: 1;
     }
 
     .ad-number {
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
+      font-size: 48px;
       color: var(--rule);
-      margin-bottom: 8px;
+      margin-bottom: 16px;
+      transition: color 0.3s;
     }
 
     .ad-title {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      transition: color 0.3s;
     }
 
     .ad-desc {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--ink-light);
-      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      transition: color 0.3s;
     }
 
-    /* === CONTACT BANNER === */
-    .contact-banner {
+    .ad-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      transition: color 0.3s;
+    }
+
+    .ad-tag {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--rule);
+      transition: border-color 0.3s;
+    }
+
+    .service-ad:hover .ad-tag {
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    /* === TESTIMONIAL === */
+    .testimonial-section {
+      padding: 64px 0;
       background: var(--ink);
       color: var(--paper);
-      padding: 64px 0;
       text-align: center;
+    }
+
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto 24px;
+      line-height: 1.5;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      font-size: 64px;
+      color: var(--accent);
+      display: block;
+      line-height: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-author {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* === CTA BANNER === */
+    .contact-banner {
+      background: var(--accent);
+      color: var(--paper);
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 16px;
     }
 
     .contact-headline {
       font-family: 'Playfair Display', serif;
       font-size: 48px;
       font-style: italic;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .contact-subhead {
-      font-size: 14px;
-      opacity: 0.6;
+      font-size: 16px;
+      opacity: 0.9;
       margin-bottom: 32px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .contact-links {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .contact-link {
@@ -451,110 +801,218 @@
       font-size: 12px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      padding: 14px 32px;
-      border: 1px solid rgba(255,255,255,0.3);
+      padding: 16px 32px;
+      border: 2px solid var(--paper);
       transition: all 0.2s;
+      font-weight: 700;
     }
 
     .contact-link:hover {
       background: var(--paper);
-      color: var(--ink);
+      color: var(--accent);
     }
 
     .contact-link.primary {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: var(--paper);
+      color: var(--accent);
     }
 
     .contact-link.primary:hover {
-      background: #a00;
-      border-color: #a00;
+      background: var(--ink);
       color: var(--paper);
+      border-color: var(--ink);
     }
 
     /* === FOOTER === */
     footer {
-      padding: 24px 0;
-      text-align: center;
-      font-size: 11px;
-      color: var(--ink-faded);
-      letter-spacing: 0.1em;
+      padding: 32px 0;
       border-top: 2px solid var(--ink);
+      position: relative;
     }
 
     footer::before {
       content: '';
-      display: block;
-      width: 100%;
+      position: absolute;
+      top: -5px;
+      left: 0;
+      right: 0;
       height: 1px;
       background: var(--ink);
-      margin-bottom: 24px;
-      margin-top: -27px;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-size: 11px;
+      color: var(--ink-faded);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      color: var(--ink-light);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
     }
 
     /* Responsive */
     @media (max-width: 900px) {
+      .ticker-wrap { display: none; }
       .headline-grid { grid-template-columns: 1fr; }
       .main-story { border-right: none; padding-right: 0; border-bottom: 1px solid var(--rule); padding-bottom: 32px; }
       .article-body { column-count: 1; }
       .stories-grid { grid-template-columns: 1fr; }
       .services-list { grid-template-columns: 1fr; }
+      .value-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-bar { flex-direction: column; gap: 12px; }
+      .footer-grid { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
+  <!-- Ticker tape - credibility signals -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span class="ticker-item"><span class="dot"></span> Blue Verified on X</span>
+      <span class="ticker-item"><span class="dot"></span> <span class="ticker-highlight">12% Engagement Rate</span> (Industry avg: 1-3%)</span>
+      <span class="ticker-item"><span class="dot"></span> 2nd Place Seedify Hackathon</span>
+      <span class="ticker-item"><span class="dot"></span> In Crypto Since 2021</span>
+      <span class="ticker-item"><span class="dot"></span> Full Stack Developer</span>
+      <span class="ticker-item"><span class="dot"></span> Licensed Medical Doctor</span>
+      <span class="ticker-item"><span class="dot"></span> Influencer Network Access</span>
+      <span class="ticker-item"><span class="dot"></span> Blue Verified on X</span>
+      <span class="ticker-item"><span class="dot"></span> <span class="ticker-highlight">12% Engagement Rate</span> (Industry avg: 1-3%)</span>
+      <span class="ticker-item"><span class="dot"></span> 2nd Place Seedify Hackathon</span>
+      <span class="ticker-item"><span class="dot"></span> In Crypto Since 2021</span>
+      <span class="ticker-item"><span class="dot"></span> Full Stack Developer</span>
+      <span class="ticker-item"><span class="dot"></span> Licensed Medical Doctor</span>
+    </div>
+  </div>
+
   <div class="container">
     <header class="masthead">
       <div class="edition-info">
         <span>Est. 2021</span>
         <span>Marketing Edition</span>
-        <span>@SOLIGXBT</span>
+        <span class="verified-badge">
+          <svg viewBox="0 0 24 24"><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"/></svg>
+          @SOLIGXBT
+        </span>
       </div>
       <h1 class="paper-name">The <span>Daily</span> Dispatch</h1>
       <p class="tagline">"All the Crypto News That's Fit to Ship"</p>
     </header>
 
     <nav class="nav-bar">
-      <a href="#work">Case Files</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <div class="nav-links">
+        <a href="#work">Case Files</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="availability">
+        <span class="availability-dot"></span>
+        Accepting 2 New Clients
+      </div>
     </nav>
 
     <section class="headline-section">
       <div class="headline-grid">
         <article class="main-story">
-          <span class="breaking">Open to Work</span>
-          <h2 class="main-headline">Medical Doctor <em>Turned Builder</em> Ships Products People Actually Use</h2>
-          <p class="byline">By <strong>Dr. Alex</strong> | Crypto Marketing Correspondent</p>
-          <p class="lead-paragraph">In an industry flooded with talkers, one builder stands out: a licensed physician who traded stethoscopes for smart contracts.</p>
+          <span class="breaking">Exclusive</span>
+          <h2 class="main-headline">Licensed Physician <em>Turned Crypto Marketer</em> Brings Clinical Precision to Web3</h2>
+          <p class="byline">Profile: <strong>Dr. Alex</strong> | Crypto Marketing</p>
+          <p class="lead-paragraph">In an industry flooded with hype merchants and empty promises, one builder brings something different: the analytical rigor of medical training combined with full-stack development skills.</p>
           <div class="article-body">
-            <p class="drop-cap">The crypto marketing landscape is littered with empty promises and inflated metrics. But occasionally, someone emerges who actually delivers. Dr. Alex, known on crypto Twitter as @SOLIGXBT, represents a rare breed: technical enough to understand the code, creative enough to make it matter.</p>
+            <p class="drop-cap">The crypto marketing landscape is littered with inflated metrics and vague deliverables. But Dr. Alex, known on crypto Twitter as @SOLIGXBT, represents a rare breed: technical enough to understand the code, creative enough to make it resonate, and disciplined enough to deliver results.</p>
             <p>"I make things people actually use, and I know how to get eyes on them," Alex states plainly. No corporate jargon. No buzzwords. Just results.</p>
-            <p>With over 2,100 engaged followers and a 12% engagement rate that dwarfs industry standards, the numbers speak for themselves. More importantly, the work speaks louder.</p>
+            <div class="pull-quote">
+              When I market something, I actually understand how it works under the hood. No bullshit.
+            </div>
+            <p>With a 12% engagement rate that's 4-6x the industry average, a track record that includes being part of the core marketing team behind Truth Bounty's 2nd place Seedify finish, and relationships with numerous crypto influencers, the proof is in the performance.</p>
           </div>
         </article>
 
         <aside class="sidebar">
           <div class="profile-box">
+            <span class="md-badge">M.D.</span>
             <img src="https://pbs.twimg.com/profile_images/1980803386858414080/GWu3ilf9.jpg" alt="Dr. Alex">
-            <p class="profile-caption">Dr. Alex in their natural habitat: building.</p>
+            <p class="profile-caption">Dr. Alex: Where medicine meets marketing.</p>
           </div>
           <div class="vital-stats">
-            <h3>By The Numbers</h3>
+            <h3>The Numbers</h3>
             <div class="stat-row">
               <span class="stat-label">Followers</span>
-              <span class="stat-value">2,142</span>
+              <div>
+                <span class="stat-value">2,142</span>
+                <span class="stat-context">Verified</span>
+              </div>
             </div>
             <div class="stat-row">
               <span class="stat-label">Eng. Rate</span>
-              <span class="stat-value highlight">12%</span>
+              <div>
+                <span class="stat-value highlight">12%</span>
+                <span class="stat-context">4-6x avg</span>
+              </div>
             </div>
             <div class="stat-row">
-              <span class="stat-label">In Crypto</span>
-              <span class="stat-value">Since '21</span>
+              <span class="stat-label">Experience</span>
+              <div>
+                <span class="stat-value">2021</span>
+                <span class="stat-context">In crypto</span>
+              </div>
             </div>
           </div>
+          <a href="#contact" class="quick-cta">
+            Let's Talk
+            <span>Response within 24hrs</span>
+          </a>
         </aside>
+      </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-section">
+      <header class="value-header">
+        <p class="value-label">Why Work With Me</p>
+        <h2 class="value-title">What You Get</h2>
+      </header>
+      <div class="container">
+        <div class="value-grid">
+          <div class="value-card">
+            <div class="value-icon">🔬</div>
+            <h3>Clinical Precision</h3>
+            <p>Medical training means I approach problems systematically. No guesswork, no fluff—just methodical execution.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <h3>Technical Depth</h3>
+            <p>Full-stack developer who can read smart contracts. I market what I understand, not what I'm told to say.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">📈</div>
+            <h3>Proven Results</h3>
+            <p>12% engagement rate. 2nd at Seedify. Real metrics from real campaigns, not vanity numbers.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h3>Influencer Access</h3>
+            <p>Genuine relationships with crypto influencers. Not cold outreach—real connections that open doors.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -565,17 +1023,31 @@
 
       <div class="stories-grid">
         <article class="story-card">
-          <p class="story-category">Marketing Team</p>
-          <h3 class="story-headline">Truth Bounty Campaign Secures 2nd Place at Seedify Hackathon</h3>
-          <p class="story-excerpt">Led marketing efforts for the prediction markets platform, delivering results that caught judges' attention in a competitive field.</p>
-          <p class="story-meta">Result: 2nd Place Finish</p>
+          <p class="story-category">Core Marketing Team</p>
+          <h3 class="story-headline">Truth Bounty: Hackathon Podium Finish</h3>
+          <p class="story-excerpt">Part of the core marketing team for @truthbounty, a prediction markets platform that secured 2nd place at the Seedify Hackathon. Contributed to positioning, content strategy, and community growth.</p>
+          <span class="story-result">🏆 2nd Place — Seedify Hackathon</span>
         </article>
 
         <article class="story-card">
-          <p class="story-category">Builder</p>
-          <h3 class="story-headline">Full-Stack Background Enables Deeper Technical Marketing</h3>
-          <p class="story-excerpt">"I code. When I market something, I actually understand how it works under the hood. No bullshit."</p>
-          <p class="story-meta">Skill: Full Stack Development</p>
+          <p class="story-category">Technical Marketing</p>
+          <h3 class="story-headline">Builder Who Markets, Marketer Who Builds</h3>
+          <p class="story-excerpt">I don't just write about products—I can build them. Full-stack background means I speak developer and translate it for everyone else.</p>
+          <span class="story-result">💻 Full Stack Development</span>
+        </article>
+
+        <article class="story-card">
+          <p class="story-category">Network</p>
+          <h3 class="story-headline">Direct Access to Crypto Influencers</h3>
+          <p class="story-excerpt">Relationships matter in CT. I've built genuine connections with numerous influencers across the crypto space—real relationships, not cold DMs.</p>
+          <span class="story-result">🤝 Influencer Network</span>
+        </article>
+
+        <article class="story-card">
+          <p class="story-category">Background</p>
+          <h3 class="story-headline">Medical Training Meets Marketing</h3>
+          <p class="story-excerpt">Licensed physician who applies diagnostic thinking to marketing problems. Systematic approach, evidence-based decisions, no guesswork.</p>
+          <span class="story-result">🩺 M.D. Credential</span>
         </article>
       </div>
     </section>
@@ -583,41 +1055,74 @@
     <section id="services" class="classifieds">
       <div class="container">
         <header class="classifieds-header">
-          <h2 class="classifieds-title">Services Offered</h2>
+          <h2 class="classifieds-title">Services</h2>
         </header>
 
         <ul class="services-list">
           <li class="service-ad">
             <div class="ad-number">01</div>
-            <h3 class="ad-title">Content</h3>
-            <p class="ad-desc">Posts that don't read like corporate garbage. Memes, threads, takes.</p>
+            <h3 class="ad-title">Content Strategy</h3>
+            <p class="ad-desc">Posts that don't read like corporate garbage. Memes that land, threads that educate, takes that spark conversation.</p>
+            <div class="ad-tags">
+              <span class="ad-tag">Memes</span>
+              <span class="ad-tag">Threads</span>
+              <span class="ad-tag">Copywriting</span>
+            </div>
           </li>
           <li class="service-ad">
             <div class="ad-number">02</div>
-            <h3 class="ad-title">Technical</h3>
-            <p class="ad-desc">I can read code and write it. DeFi, smart contracts, the works.</p>
+            <h3 class="ad-title">Technical Content</h3>
+            <p class="ad-desc">DeFi explainers, smart contract breakdowns, protocol deep-dives. Complex topics made accessible without dumbing them down.</p>
+            <div class="ad-tags">
+              <span class="ad-tag">DeFi</span>
+              <span class="ad-tag">Smart Contracts</span>
+              <span class="ad-tag">Docs</span>
+            </div>
           </li>
           <li class="service-ad">
             <div class="ad-number">03</div>
-            <h3 class="ad-title">Community</h3>
-            <p class="ad-desc">Been in crypto Twitter since 2021. I know how this works.</p>
+            <h3 class="ad-title">Community & Growth</h3>
+            <p class="ad-desc">Been in CT since 2021. I know what works, what doesn't, and how to build genuine engagement—not bot farms.</p>
+            <div class="ad-tags">
+              <span class="ad-tag">Twitter/X</span>
+              <span class="ad-tag">Discord</span>
+              <span class="ad-tag">Telegram</span>
+            </div>
           </li>
         </ul>
       </div>
     </section>
 
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+      <div class="container">
+        <blockquote class="testimonial-quote">
+          Alex brings a rare combination: deep technical understanding and the ability to communicate it clearly. That's invaluable in crypto.
+        </blockquote>
+        <p class="testimonial-author">— Truth Bounty Team</p>
+      </div>
+    </section>
+
     <section id="contact" class="contact-banner">
-      <h2 class="contact-headline">Let's make headlines.</h2>
-      <p class="contact-subhead">Need someone who gets crypto and can actually ship? Get in touch.</p>
+      <p class="contact-label">Currently Accepting Projects</p>
+      <h2 class="contact-headline">Let's make something people talk about.</h2>
+      <p class="contact-subhead">Looking for marketing that actually converts? Let's discuss your project. I respond to every serious inquiry within 24 hours.</p>
       <div class="contact-links">
-        <a href="#" class="contact-link primary">DM on X</a>
-        <a href="#" class="contact-link">Email</a>
-        <a href="#" class="contact-link">Telegram</a>
+        <a href="https://twitter.com/soligxbt" class="contact-link primary">DM on X →</a>
+        <a href="mailto:alexmustapha11@gmail.com" class="contact-link">Email</a>
+        <a href="https://t.me/THaFa_11" class="contact-link">Telegram</a>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Dr. Alex — @SOLIGXBT — alexmustapha11@gmail.com — t.me/THaFa_11</p>
+      <div class="footer-grid">
+        <div class="footer-left">© 2026 Dr. Alex — Built with clinical precision.</div>
+        <div class="footer-links">
+          <a href="https://twitter.com/soligxbt">@SOLIGXBT</a>
+          <a href="mailto:alexmustapha11@gmail.com">Email</a>
+          <a href="https://t.me/THaFa_11">Telegram</a>
+        </div>
+      </div>
     </footer>
   </div>
 </body>
