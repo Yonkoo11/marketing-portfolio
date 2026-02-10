@@ -1,29 +1,28 @@
 import type { Metadata } from "next";
+import { profile, contact } from "@/data/config";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "THE DAILY DISPATCH — Dr. Alex | Marketing & Growth",
-  description:
-    "Builder who ships. I make things people actually use, and I know how to get eyes on them. Currently accepting new clients.",
+  title: `THE DAILY DISPATCH \u2014 ${profile.name} | Marketing & Growth`,
+  description: `Builder who ships. ${profile.bio} ${profile.status.toLowerCase()}.`,
   openGraph: {
-    title: "THE DAILY DISPATCH — Dr. Alex | Marketing & Growth",
-    description:
-      "Builder who ships. Technical depth combined with marketing instinct. 12% engagement rate.",
+    title: `THE DAILY DISPATCH \u2014 ${profile.name} | Marketing & Growth`,
+    description: `Builder who ships. Technical depth combined with marketing instinct. ${profile.bio}`,
     type: "website",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Dr. Alex - Marketing & Growth",
+        alt: `${profile.name} - Marketing & Growth`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dr. Alex | Marketing & Growth",
+    title: `${profile.name} | Marketing & Growth`,
     description: "Builder who ships. Technical depth combined with marketing instinct.",
-    creator: "@soligxbt",
+    creator: contact.xHandle.toLowerCase(),
     images: ["/og.png"],
   },
   icons: {
