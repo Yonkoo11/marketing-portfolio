@@ -26,7 +26,7 @@ export const stats = {
 export const tickerItems = [
   "Blue Verified on X",
   { text: "12% Engagement Rate", highlight: true, suffix: " (Industry avg: 1-3%)" },
-  "2nd Place Hackathon Winner",
+  "2x Hackathon Winner",
   "Building Since 2021",
   "Full Stack Developer",
   "Influencer Network Access",
